@@ -1,0 +1,17 @@
+{
+  "city": "Utica",
+  "neighborhood": "Hall Road",
+  "address": "8315 Hall Rd",
+  "cityStateZip": "Utica, MI 48317",
+  "phone": "586-731-5930",
+  "hours": [
+    { "days": "Monday – Saturday", "open": "8:00 AM", "close": "10:00 PM" },
+    { "days": "Sunday",            "open": "9:00 AM", "close": "9:00 PM"  }
+  ],
+  "orderUrl": "https://www.snappyeats.com/Order/menudetail.aspx?restaurantID=3714#!/category/",
+  "menuUrl":  "https://www.snappyeats.com/Order/menudetail.aspx?restaurantID=3714#!/category/",
+  "rating": 4.7,
+  "reviewCount": "1.4k",
+  "googleReviewUrl": "https://www.google.com/maps/search/?api=1&query=The+Original+Buscemis+8315+Hall+Rd+Utica+MI",
+  "googleListingUrl": "https://www.google.com/maps/search/?api=1&query=The+Original+Buscemis+8315+Hall+Rd+Utica+MI"
+}
