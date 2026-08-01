@@ -772,16 +772,6 @@ p { margin: 0 0 1rem; }
 
 .site-footer__contact-lines a:hover { color: var(--brand-gold); }
 
-.site-footer__heritage {
-  margin-top: 1.5rem;
-  text-align: center;
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--brand-gold);
-}
-
 .site-footer__meta {
   margin: 2.5rem 0 0;
   text-align: center;

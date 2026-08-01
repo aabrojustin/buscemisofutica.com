@@ -55,7 +55,6 @@ if ($ratingStr -notmatch '\.') { $ratingStr = "$ratingStr.0" }
 
 $statementHeading = Encode-Html $store.statementHeading
 $statementBody    = Encode-Html $store.statementBody
-$heritageLine     = Encode-Html $store.heritageLine
 $galleryCaption   = Encode-Html $store.galleryCaption
 
 # ---- Hours rows ----
@@ -327,7 +326,6 @@ $followCol
         <p>$address, $cityState</p>
       </div>
 
-      <p class="site-footer__heritage">$heritageLine</p>
       <p class="site-footer__meta">&copy; 2026 The Original Buscemi&rsquo;s &middot; Serving Michigan since 1956</p>
     </div>
   </footer>
