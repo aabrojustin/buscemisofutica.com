@@ -5,13 +5,28 @@
   "cityStateZip": "Utica, MI 48317",
   "phone": "586-731-5930",
   "hours": [
-    { "days": "Monday – Saturday", "open": "8:00 AM", "close": "10:00 PM" },
+    { "days": "Monday - Saturday", "open": "8:00 AM", "close": "10:00 PM" },
     { "days": "Sunday",            "open": "9:00 AM", "close": "9:00 PM"  }
   ],
   "orderUrl": "https://www.snappyeats.com/Order/menudetail.aspx?restaurantID=3714#!/category/",
   "menuUrl":  "https://www.snappyeats.com/Order/menudetail.aspx?restaurantID=3714#!/category/",
+  "instagramUrl": "",
   "rating": 4.7,
   "reviewCount": "1.4k",
   "googleReviewUrl": "https://www.google.com/maps/search/?api=1&query=The+Original+Buscemis+8315+Hall+Rd+Utica+MI",
-  "googleListingUrl": "https://www.google.com/maps/search/?api=1&query=The+Original+Buscemis+8315+Hall+Rd+Utica+MI"
+  "googleListingUrl": "https://www.google.com/maps/search/?api=1&query=The+Original+Buscemis+8315+Hall+Rd+Utica+MI",
+
+  "ticker": [
+    "Home of the Original Torpedo",
+    "Detroit Style Square Pizza",
+    "Party Shoppe - Liquor, Beer & Wine",
+    "Family Owned Since 1956"
+  ],
+
+  "statementHeading": "Since 1956, the same family recipes, the same fresh baked rolls, the same corner.",
+  "statementBody": "Paul A. Buscemi opened a small party store in Detroit and introduced the neighborhood to the Italian submarine sandwich. Three generations later, the Torpedo is still built the same way, and it is waiting for you on Hall Road.",
+
+  "heritageLine": "Family owned for three generations",
+
+  "galleryCaption": "A look inside from our beloved customers"
 }
