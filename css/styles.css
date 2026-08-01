@@ -632,7 +632,6 @@ p { margin: 0 0 1rem; }
 .visit__map {
   border-radius: var(--radius-sm);
   overflow: hidden;
-  border: 3px solid var(--brand-burgundy);
   flex: 1 1 auto;
   min-height: 320px;
 }
