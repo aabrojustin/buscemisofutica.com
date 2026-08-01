@@ -143,6 +143,8 @@ $indexBody = @"
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>The Original Buscemi's &mdash; $city, $nbhd</title>
   <meta name="description" content="The Original Buscemi's at $address in $cityState. Italian Torpedo subs, Detroit-style pizza, and Party Shoppe favorites since 1956. Call $phone.">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@700;900&family=Archivo:wght@400;500;600;700&display=swap">
