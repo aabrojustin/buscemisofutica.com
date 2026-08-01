@@ -606,6 +606,21 @@ p { margin: 0 0 1rem; }
 
 .visit__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
 
+/* In the visit/reviews area the secondary actions lose the outlined box -
+   they read as plain red text links beside the solid primary button. The
+   header's outlined Order Online button is unaffected. */
+.visit__inner .btn--outline {
+  border-color: transparent;
+  padding-inline: 0.5rem;
+}
+
+.visit__inner .btn--outline:hover {
+  background: transparent;
+  color: var(--brand-red-deep);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
 /* Right column: map on top, hours beneath. The map flexes to soak up
    whatever height the info column leaves over. */
 .visit__side {
