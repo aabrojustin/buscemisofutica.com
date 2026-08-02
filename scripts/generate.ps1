@@ -53,6 +53,10 @@ if ([string]::IsNullOrEmpty($ratingStr)) { $ratingStr = [string]$rating }
 # Always show one decimal for ratings (e.g. 4.7 not 4)
 if ($ratingStr -notmatch '\.') { $ratingStr = "$ratingStr.0" }
 
+$siteUrl = ($store.siteUrl).TrimEnd('/')
+# schema.org opening hours (update alongside store.json "hours")
+$hoursSchemaJson = ($store.hoursSchema | ForEach-Object { '"' + $_ + '"' }) -join ", "
+
 $statementHeading = Encode-Html $store.statementHeading
 $statementBody    = Encode-Html $store.statementBody
 $galleryCaption   = Encode-Html $store.galleryCaption
@@ -140,10 +144,41 @@ $indexBody = @"
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>The Original Buscemi's</title>
+  <title>Original Buscemi's - Hall Road, Utica</title>
   <meta name="description" content="The Original Buscemi's at $address in $cityState. Italian Torpedo subs, Detroit-style pizza, and Party Shoppe favorites since 1956. Call $phone.">
+  <link rel="canonical" href="$siteUrl/">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="apple-touch-icon" href="assets/favicon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="The Original Buscemi's">
+  <meta property="og:title" content="Original Buscemi's - Hall Road, Utica">
+  <meta property="og:description" content="Italian Torpedo subs, Detroit-style pizza, and Party Shoppe favorites since 1956. $address, $cityState.">
+  <meta property="og:url" content="$siteUrl/">
+  <meta property="og:image" content="$siteUrl/assets/og-logo.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:image" content="$siteUrl/assets/og-logo.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "The Original Buscemi's",
+    "url": "$siteUrl/",
+    "image": "$siteUrl/assets/og-logo.png",
+    "logo": "$siteUrl/assets/og-logo.png",
+    "telephone": "$tel",
+    "servesCuisine": ["Pizza", "Italian", "Sandwiches"],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "$address",
+      "addressLocality": "$city",
+      "addressRegion": "MI",
+      "postalCode": "48317",
+      "addressCountry": "US"
+    },
+    "openingHours": [$hoursSchemaJson],
+    "foundingDate": "1956"
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@700;900&family=Archivo:wght@400;500;600;700&display=swap">
