@@ -250,8 +250,14 @@ $tickerCopy
       <figure class="statement__print statement__print--left">
         <img src="assets/story/history-1.avif" alt="" loading="lazy">
       </figure>
+      <figure class="statement__print statement__print--left-low">
+        <img src="assets/story/history-4.avif" alt="" loading="lazy">
+      </figure>
       <figure class="statement__print statement__print--right">
         <img src="assets/story/history-2.avif" alt="" loading="lazy">
+      </figure>
+      <figure class="statement__print statement__print--right-low">
+        <img src="assets/story/history-3.avif" alt="" loading="lazy">
       </figure>
     </div>
     <div class="container container--narrow">
