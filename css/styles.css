@@ -651,6 +651,19 @@ p { margin: 0 0 1rem; }
 .section--visit .visit__details dd { color: var(--brand-cream); }
 .section--visit .visit__details dd a:hover { color: var(--brand-gold); }
 
+/* Primary actions go solid white on the dark ground */
+.section--visit .btn--primary {
+  background: var(--brand-white);
+  border-color: var(--brand-white);
+  color: var(--brand-burgundy);
+}
+
+.section--visit .btn--primary:hover {
+  background: var(--brand-cream);
+  border-color: var(--brand-cream);
+  color: var(--brand-burgundy);
+}
+
 /* Borderless secondary actions read cream on the dark ground */
 .section--visit .btn--outline { color: var(--brand-cream); }
 .section--visit .btn--outline:hover { color: var(--brand-gold); background: transparent; }
