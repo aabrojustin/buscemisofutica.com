@@ -54,6 +54,10 @@ if ([string]::IsNullOrEmpty($ratingStr)) { $ratingStr = [string]$rating }
 if ($ratingStr -notmatch '\.') { $ratingStr = "$ratingStr.0" }
 
 $siteUrl = ($store.siteUrl).TrimEnd('/')
+# Raw (un-HTML-encoded) URLs for JSON-LD - inside <script> blocks, entities
+# like &amp; are NOT decoded, so encoded URLs would be corrupted there.
+$menuUrlRaw    = $store.menuUrl
+$listingUrlRaw = $store.googleListingUrl
 # schema.org opening hours (update alongside store.json "hours")
 $hoursSchemaJson = ($store.hoursSchema | ForEach-Object { '"' + $_ + '"' }) -join ", "
 
@@ -95,6 +99,23 @@ if (Test-Path $galleryDir -PathType Container) {
   $files = Get-ChildItem -Path $galleryDir -File |
            Where-Object { $_.Extension -match '^\.(jpg|jpeg|png|webp)$' } |
            Sort-Object Name
+  # Descriptive alt text per photo (keyed by filename) - tells search engines
+  # and screen readers what each shot actually shows. Falls back to a generic
+  # line for any photo not in the map.
+  $altMap = @{
+    "02-round-pizza"      = "Round sausage and pepperoni pizza from The Original Buscemi's"
+    "04-round-pizza-box"  = "Buscemi's round pepperoni and sausage pizza in a takeout box"
+    "05-pepperoni-sunlight" = "Buscemi's round pepperoni pizza in the box"
+    "06-bacon-pepperoni"  = "Bacon and pepperoni pizza slices from Buscemi's"
+    "07-cheese-bread-tray" = "Tray of Buscemi's cheese bread"
+    "08-cheese-pizza"     = "Buscemi's round cheese pizza with a side of ranch"
+    "09-calzones"         = "Fresh baked Buscemi's calzones wrapped in foil"
+    "10-pepperoni-peel"   = "Sliced pepperoni pizza on the peel at Buscemi's"
+    "11-detroit-square"   = "Detroit-style square pepperoni pizza in a Buscemi's box"
+    "12-mixed-pies"       = "Close-up of Buscemi's specialty pizzas"
+    "13-detroit-closeup"  = "Detroit-style square pizza with pepperoni from Buscemi's"
+    "14-slices-box"       = "Buscemi's pizza slices in a takeout box"
+  }
   foreach ($f in $files) {
     $galleryCount++
     # Stagger class is baked in per item (not nth-child) so the slideshow's
@@ -103,7 +124,10 @@ if (Test-Path $galleryDir -PathType Container) {
     $cls = "gallery__item"
     if ($galleryCount % 2 -eq 0) { $cls = "gallery__item gallery__item--low" }
     $rel = "assets/gallery/" + $f.Name
-    $alt = Encode-Html ("The Original Buscemi's " + $store.city + " - photo " + $galleryCount)
+    $base = [System.IO.Path]::GetFileNameWithoutExtension($f.Name)
+    if ($altMap.ContainsKey($base)) { $altText = $altMap[$base] }
+    else { $altText = "The Original Buscemi's " + $store.city + " - photo " + $galleryCount }
+    $alt = Encode-Html $altText
     [void]$galleryHtml.AppendLine("        <li class=`"$cls`"><img src=`"$rel`" alt=`"$alt`" loading=`"lazy`"></li>")
   }
 }
@@ -166,6 +190,9 @@ $indexBody = @"
     "image": "$siteUrl/assets/og-logo.png",
     "logo": "$siteUrl/assets/og-logo.png",
     "telephone": "$tel",
+    "priceRange": "$",
+    "menu": "$menuUrlRaw",
+    "sameAs": ["$listingUrlRaw"],
     "servesCuisine": ["Pizza", "Italian", "Sandwiches"],
     "address": {
       "@type": "PostalAddress",
@@ -389,6 +416,20 @@ $followCol
 "@
 
 WriteUtf8 $indexPath $indexBody
+
+# ---- sitemap.xml (single-page site; lastmod = generation date) ----
+$today = Get-Date -Format "yyyy-MM-dd"
+$sitemap = @"
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>$siteUrl/</loc>
+    <lastmod>$today</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+</urlset>
+"@
+WriteUtf8 (Join-Path $root "sitemap.xml") $sitemap
 if ($galleryCount -eq 0) {
   Write-Host "[note] No gallery photos found - rendered 5 placeholder tiles. Drop images into assets/gallery/."
 } else {
