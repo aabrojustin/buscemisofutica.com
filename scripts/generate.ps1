@@ -247,17 +247,23 @@ $tickerCopy
 
   <section class="statement" id="story">
     <div class="statement__prints" aria-hidden="true">
-      <figure class="statement__print statement__print--left">
+      <figure class="statement__print statement__print--l1">
         <img src="assets/story/history-1.avif" alt="" loading="lazy">
       </figure>
-      <figure class="statement__print statement__print--left-low">
+      <figure class="statement__print statement__print--l2">
         <img src="assets/story/history-4.avif" alt="" loading="lazy">
       </figure>
-      <figure class="statement__print statement__print--right">
+      <figure class="statement__print statement__print--l3">
+        <img src="assets/story/history-5-sketch.png" alt="" loading="lazy">
+      </figure>
+      <figure class="statement__print statement__print--r1">
         <img src="assets/story/history-2.avif" alt="" loading="lazy">
       </figure>
-      <figure class="statement__print statement__print--right-low">
-        <img src="assets/story/history-3.avif" alt="" loading="lazy">
+      <figure class="statement__print statement__print--r2">
+        <img src="assets/story/history-6-modelt.png" alt="" loading="lazy">
+      </figure>
+      <figure class="statement__print statement__print--r3">
+        <img src="assets/story/history-7-building.png" alt="" loading="lazy">
       </figure>
     </div>
     <div class="container container--narrow">

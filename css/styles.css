@@ -458,35 +458,20 @@ p { margin: 0 0 1rem; }
   border-radius: 1px;
 }
 
-.statement__print--left {
-  left: -2%;
-  top: 42%;
-  transform: translateY(-50%) rotate(-5deg);
-}
+/* Six prints, three per side: tops largest at the edges, middles tucked
+   inward, lows back out - alternating tilts, so the set reads as a casual
+   scatter of old photos rather than a grid. */
+.statement__print--l1 { left: -2%; top: 18%; transform: translateY(-50%) rotate(-5deg); }
+.statement__print--l2 { left: 3%;  top: 50%; transform: translateY(-50%) rotate(3deg); }
+.statement__print--l3 { left: -1%; top: 82%; transform: translateY(-50%) rotate(-4deg); }
+.statement__print--r1 { right: -2%; top: 18%; transform: translateY(-50%) rotate(4deg); }
+.statement__print--r2 { right: 3%;  top: 50%; transform: translateY(-50%) rotate(-3deg); }
+.statement__print--r3 { right: -1%; top: 82%; transform: translateY(-50%) rotate(5deg); }
 
-.statement__print--left-low {
-  left: 4%;
-  top: 80%;
-  transform: translateY(-50%) rotate(3deg);
-}
-
-.statement__print--left-low img { width: clamp(140px, 12vw, 185px); }
-
-.statement__print--right {
-  right: -2%;
-  top: 42%;
-  transform: translateY(-50%) rotate(4deg);
-}
-
-/* Third print: tucked lower on the right, smaller and counter-tilted, so the
-   three read as a casual scatter instead of mirrored bookends. */
-.statement__print--right-low {
-  right: 4%;
-  top: 80%;
-  transform: translateY(-50%) rotate(-3deg);
-}
-
-.statement__print--right-low img { width: clamp(140px, 12vw, 185px); }
+.statement__print--l2 img,
+.statement__print--r2 img,
+.statement__print--l3 img,
+.statement__print--r3 img { width: clamp(150px, 13vw, 200px); }
 
 @media (max-width: 1100px) {
   .statement__print { display: none; }
