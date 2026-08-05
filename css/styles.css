@@ -846,27 +846,6 @@ p { margin: 0 0 1rem; }
   padding-bottom: 3rem;
 }
 
-/* White closing strip: contact lines + copyright on white, dark type. */
-.site-footer__bottom {
-  background: var(--brand-white);
-  padding-block: 2.5rem 1.75rem;
-}
-
-.site-footer__bottom .site-footer__contact-lines { margin-top: 0; }
-
-/* Everything in the white strip is burgundy - one calm closing color. The
-   address steps down a size so the phone line still leads. */
-.site-footer__bottom .site-footer__contact-lines p { color: var(--brand-burgundy); }
-.site-footer__bottom .site-footer__contact-lines p + p {
-  font-size: clamp(1.0625rem, 2.55vw, 1.7rem);
-}
-.site-footer__bottom .site-footer__contact-lines a:hover { color: var(--brand-red); }
-
-.site-footer__bottom .site-footer__meta {
-  color: var(--brand-burgundy);
-  margin-top: 3.25rem;
-}
-
 .site-footer__brand img { width: 180px; }
 
 .site-footer__col h2 {
@@ -892,21 +871,6 @@ p { margin: 0 0 1rem; }
 
 .site-footer__col a:hover { color: var(--brand-gold); }
 
-.site-footer__contact-lines {
-  margin-top: 2.5rem;
-  text-align: center;
-}
-
-.site-footer__contact-lines p {
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-size: clamp(1.25rem, 3vw, 2rem);
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  margin: 0 0 0.35rem;
-}
-
-.site-footer__contact-lines a:hover { color: var(--brand-gold); }
 
 .site-footer__meta {
   margin: 2.5rem 0 0;
