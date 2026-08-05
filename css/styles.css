@@ -545,7 +545,8 @@ p { margin: 0 0 1rem; }
 .gallery__head {
   display: flex;
   align-items: flex-end;
-  justify-content: space-between;
+  justify-content: center;
+  text-align: center;
   gap: 1rem;
   margin-bottom: 2rem;
 }
@@ -911,5 +912,5 @@ p { margin: 0 0 1rem; }
   .hero__badges { gap: 0.5rem 1.5rem; }
   .site-footer__top { grid-template-columns: 1fr; text-align: center; }
   .site-footer__brand img { margin-inline: auto; }
-  .gallery__head { flex-direction: column; align-items: flex-start; }
+  .gallery__head { flex-direction: column; align-items: center; }
 }
