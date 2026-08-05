@@ -642,6 +642,32 @@ p { margin: 0 0 1rem; }
 .visit__reviews .reviews__copy { margin: 0 0 1.5rem; max-width: 52ch; }
 .visit__reviews .reviews__actions { justify-content: flex-start; }
 
+/* ---- Burgundy visit band: every text token flips for the dark ground ---- */
+.section--visit { background: var(--brand-burgundy); }
+
+.section--visit .eyebrow { color: var(--brand-gold); }
+.section--visit .section-title { color: var(--brand-cream); }
+.section--visit .visit__details dt { color: var(--brand-gold); }
+.section--visit .visit__details dd { color: var(--brand-cream); }
+.section--visit .visit__details dd a:hover { color: var(--brand-gold); }
+
+/* Borderless secondary actions read cream on the dark ground */
+.section--visit .btn--outline { color: var(--brand-cream); }
+.section--visit .btn--outline:hover { color: var(--brand-gold); background: transparent; }
+
+.section--visit .visit__reviews { border-top-color: rgba(255, 255, 255, 0.2); }
+.section--visit .reviews__stars-empty { color: rgba(255, 255, 255, 0.25); }
+.section--visit .reviews__rating-value { color: var(--brand-cream); }
+.section--visit .reviews__rating-of,
+.section--visit .reviews__count,
+.section--visit .reviews__copy { color: rgba(248, 241, 222, 0.75); }
+
+.section--visit .hours__table th { color: var(--brand-white); }
+.section--visit .hours__table td { color: rgba(248, 241, 222, 0.75); }
+.section--visit .hours__table th,
+.section--visit .hours__table td { border-bottom-color: rgba(255, 255, 255, 0.18); }
+.section--visit .hours__note { color: rgba(248, 241, 222, 0.7); }
+
 .visit__details {
   margin: 0 0 2rem;
   display: grid;
