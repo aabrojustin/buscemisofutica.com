@@ -254,16 +254,16 @@ $tickerCopy
         <img src="assets/story/history-4.png" alt="" loading="lazy">
       </figure>
       <figure class="statement__print statement__print--l3">
-        <img src="assets/story/history-5-sketch.png" alt="" loading="lazy">
+        <img src="assets/story/history-5-sketch.png?v=2" alt="" loading="lazy">
       </figure>
       <figure class="statement__print statement__print--r1">
         <img src="assets/story/history-2.avif" alt="" loading="lazy">
       </figure>
       <figure class="statement__print statement__print--r2">
-        <img src="assets/story/history-6-modelt.png" alt="" loading="lazy">
+        <img src="assets/story/history-6-modelt.png?v=2" alt="" loading="lazy">
       </figure>
       <figure class="statement__print statement__print--r3">
-        <img src="assets/story/history-7-building.png" alt="" loading="lazy">
+        <img src="assets/story/history-7-building.png?v=2" alt="" loading="lazy">
       </figure>
     </div>
     <div class="container container--narrow">
