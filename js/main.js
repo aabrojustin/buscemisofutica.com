@@ -92,7 +92,7 @@
   };
 
   /* Auto-drift */
-  const SPEED = 0.3; // px per frame at 60fps - a calm, readable glide
+  const SPEED = 0.4; // px per frame at 60fps - a calm, readable glide
   let paused = false;
   let carry = 0; // scrollLeft is integer in some browsers; accumulate fractions
 

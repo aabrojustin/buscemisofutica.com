@@ -516,11 +516,12 @@ p { margin: 0 0 1rem; }
    assets/gallery just works, no per-photo crop tuning. */
 .gallery__item {
   --card-h: clamp(260px, 30vw, 340px);
+  --mat: 6px; /* white border around each print */
   flex: 0 0 auto;
   height: var(--card-h);
   scroll-snap-align: start;
   background: var(--brand-white);
-  padding: 12px;
+  padding: var(--mat);
   border-radius: 2px;
   box-shadow: var(--shadow-card);
   display: flex;
