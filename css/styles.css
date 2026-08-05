@@ -438,11 +438,51 @@ p { margin: 0 0 1rem; }
    Statement - one oversized serif line and a single call to action.
    ========================================================================== */
 
+/* Matted photos peeking in from the section edges, tilted like prints laid
+   around the text. Decorative: hidden from screen readers and from narrow
+   viewports, where they would crowd the statement. */
+.statement__print {
+  position: absolute;
+  margin: 0;
+  background: var(--brand-white);
+  padding: 6px;
+  border-radius: 2px;
+  box-shadow: var(--shadow-card-hover);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.statement__print img {
+  display: block;
+  width: clamp(180px, 17vw, 250px);
+  border-radius: 1px;
+}
+
+.statement__print--left {
+  left: -2%;
+  top: 50%;
+  transform: translateY(-50%) rotate(-5deg);
+}
+
+.statement__print--right {
+  right: -2%;
+  top: 56%;
+  transform: translateY(-50%) rotate(4deg);
+}
+
+@media (max-width: 1100px) {
+  .statement__print { display: none; }
+}
+
 .statement {
+  position: relative;
+  overflow: hidden; /* clips the edge-bleeding prints, no sideways scroll */
   text-align: center;
   padding-block: var(--section-y);
   background: var(--brand-white);
 }
+
+.statement > .container { position: relative; z-index: 1; }
 
 .statement__body {
   font-size: clamp(1rem, 1.6vw, 1.125rem);

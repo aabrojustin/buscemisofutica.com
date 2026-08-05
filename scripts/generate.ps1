@@ -246,6 +246,14 @@ $tickerCopy
   </div>
 
   <section class="statement" id="story">
+    <div class="statement__prints" aria-hidden="true">
+      <figure class="statement__print statement__print--left">
+        <img src="assets/story/history-1.avif" alt="" loading="lazy">
+      </figure>
+      <figure class="statement__print statement__print--right">
+        <img src="assets/story/history-2.avif" alt="" loading="lazy">
+      </figure>
+    </div>
     <div class="container container--narrow">
       <img class="statement__mark" src="assets/logo-shield.png" alt="" aria-hidden="true">
       <span class="eyebrow">Our Story</span>
