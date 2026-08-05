@@ -461,12 +461,14 @@ p { margin: 0 0 1rem; }
 /* Six prints, three per side: tops largest at the edges, middles tucked
    inward, lows back out - alternating tilts, so the set reads as a casual
    scatter of old photos rather than a grid. */
-.statement__print--l1 { left: -2%; top: 18%; transform: translateY(-50%) rotate(-5deg); }
-.statement__print--l2 { left: 3%;  top: 50%; transform: translateY(-50%) rotate(3deg); }
-.statement__print--l3 { left: -1%; top: 82%; transform: translateY(-50%) rotate(-4deg); }
-.statement__print--r1 { right: -2%; top: 18%; transform: translateY(-50%) rotate(4deg); }
-.statement__print--r2 { right: 3%;  top: 50%; transform: translateY(-50%) rotate(-3deg); }
-.statement__print--r3 { right: -1%; top: 82%; transform: translateY(-50%) rotate(5deg); }
+/* Every print sits fully INSIDE the section - no edge bleed, so nothing gets
+   clipped. Tops hang from the top, lows anchor to the bottom. */
+.statement__print--l1 { left: 1%;   top: 3%;    transform: rotate(-5deg); }
+.statement__print--l2 { left: 2.5%; top: 38%;   transform: rotate(3deg); }
+.statement__print--l3 { left: 1%;   bottom: 3%; transform: rotate(-4deg); }
+.statement__print--r1 { right: 1%;   top: 3%;    transform: rotate(4deg); }
+.statement__print--r2 { right: 2.5%; top: 38%;   transform: rotate(-3deg); }
+.statement__print--r3 { right: 1%;   bottom: 3%; transform: rotate(5deg); }
 
 .statement__print--l2 img,
 .statement__print--r2 img,
