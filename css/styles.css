@@ -516,25 +516,30 @@ p { margin: 0 0 1rem; }
    Gallery - horizontal scroll-snap carousel of portrait photos.
    ========================================================================== */
 
-/* Dark band so the white-matted prints pop like photos on a table. Tighter
-   vertical padding than the default section rhythm - the band should hug the
-   heading and strip, not float them in empty burgundy. */
+/* White band - the prints separate from the background via their shadows,
+   like photos laid on a counter. Tighter vertical padding than the default
+   section rhythm so the band hugs the heading and strip. */
 .gallery {
   position: relative;
   padding-block: clamp(2.5rem, 5.5vw, 4.5rem) clamp(2rem, 4.5vw, 3.5rem);
-  background: var(--brand-burgundy);
+  background: var(--brand-white);
   overflow: hidden;
 }
 
 .gallery .eyebrow {
-  color: var(--brand-gold);
+  color: var(--brand-red);
   font-size: 0.8125rem;
   letter-spacing: 0.2em;
 }
 
 .gallery .section-title {
-  color: var(--brand-cream);
+  color: var(--brand-burgundy);
   font-size: clamp(2.5rem, 5.5vw, 4.25rem);
+}
+
+/* On white, the mats need a firmer shadow to read as separate prints. */
+.gallery .gallery__item {
+  box-shadow: 0 6px 22px rgba(26, 26, 26, 0.16), 0 1px 3px rgba(26, 26, 26, 0.10);
 }
 
 .gallery__head {
