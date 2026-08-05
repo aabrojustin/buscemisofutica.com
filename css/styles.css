@@ -527,13 +527,14 @@ p { margin: 0 0 1rem; }
 }
 
 .gallery .eyebrow {
-  color: var(--brand-red);
+  color: var(--brand-black);
+  font-weight: 700;
   font-size: 0.8125rem;
   letter-spacing: 0.2em;
 }
 
 .gallery .section-title {
-  color: var(--brand-burgundy);
+  color: var(--brand-red);
   font-size: clamp(2.5rem, 5.5vw, 4.25rem);
 }
 
