@@ -376,12 +376,17 @@ $($hoursRows.ToString())
 $followCol
       </div>
 
-      <div class="site-footer__contact-lines">
-        <p><a href="tel:$tel">Call Us: $phone</a></p>
-        <p>$address, $cityState</p>
-      </div>
+    </div>
 
-      <p class="site-footer__meta">&copy; 2026 The Original Buscemi&rsquo;s &middot; Serving Michigan since 1956</p>
+    <div class="site-footer__bottom">
+      <div class="container">
+        <div class="site-footer__contact-lines">
+          <p><a href="tel:$tel">Call Us: $phone</a></p>
+          <p>$address, $cityState</p>
+        </div>
+
+        <p class="site-footer__meta">&copy; 2026 The Original Buscemi&rsquo;s &middot; Serving Michigan since 1956</p>
+      </div>
     </div>
   </footer>
 

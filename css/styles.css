@@ -836,7 +836,7 @@ p { margin: 0 0 1rem; }
 .site-footer {
   background: var(--brand-burgundy);
   color: var(--brand-white);
-  padding-block: clamp(3rem, 7vw, 5rem) 2rem;
+  padding-top: clamp(3rem, 7vw, 5rem);
 }
 
 .site-footer__top {
@@ -844,8 +844,18 @@ p { margin: 0 0 1rem; }
   grid-template-columns: 1.2fr repeat(3, 1fr);
   gap: 2.5rem;
   padding-bottom: 3rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
 }
+
+/* White closing strip: contact lines + copyright on white, dark type. */
+.site-footer__bottom {
+  background: var(--brand-white);
+  padding-block: 2.5rem 1.75rem;
+}
+
+.site-footer__bottom .site-footer__contact-lines { margin-top: 0; }
+.site-footer__bottom .site-footer__contact-lines p { color: var(--brand-burgundy); }
+.site-footer__bottom .site-footer__contact-lines a:hover { color: var(--brand-red); }
+.site-footer__bottom .site-footer__meta { color: var(--brand-muted); }
 
 .site-footer__brand img { width: 180px; }
 
