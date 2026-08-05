@@ -516,6 +516,42 @@ p { margin: 0 0 1rem; }
    Gallery - horizontal scroll-snap carousel of portrait photos.
    ========================================================================== */
 
+/* ---- Detroit-style explainer + FAQ ("The Square") ---- */
+.square__copy {
+  max-width: 62ch;
+  margin: 0 auto 1.25rem;
+  font-size: 1.0625rem;
+  color: var(--brand-black);
+}
+
+.square__copy a { color: var(--brand-red); font-weight: 600; }
+.square__copy a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+.faq {
+  max-width: 62ch;
+  margin: 3rem auto 0;
+  text-align: left;
+}
+
+.faq__q {
+  font-size: 1.1875rem;
+  color: var(--brand-burgundy);
+  margin: 1.75rem 0 0.4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--brand-cream-dark);
+}
+
+.faq__q:first-child { border-top: 0; padding-top: 0; margin-top: 0; }
+
+.faq__a {
+  margin: 0;
+  color: var(--brand-muted);
+  font-size: 0.9875rem;
+}
+
+.faq__a a { color: var(--brand-red); font-weight: 600; }
+.faq__a a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
 /* White band - the prints separate from the background via their shadows,
    like photos laid on a counter. Tighter vertical padding than the default
    section rhythm so the band hugs the heading and strip. */

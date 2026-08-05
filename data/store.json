@@ -1,6 +1,12 @@
 {
   "siteUrl": "https://buscemisofutica.com",
-  "hoursSchema": ["Mo-Sa 08:00-22:00", "Su 09:00-21:00"],
+  "hoursSpec": [
+    { "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], "opens": "08:00", "closes": "22:00" },
+    { "days": ["Sunday"], "opens": "09:00", "closes": "21:00" }
+  ],
+  "geo": { "lat": "42.62626", "lng": "-83.02923" },
+  "yelpUrl": "https://www.yelp.com/biz/buscemis-utica",
+  "tripadvisorUrl": "https://www.tripadvisor.com/Restaurant_Review-g42777-d891202-Reviews-Buscemi_s_of_Utica-Utica_Michigan.html",
   "city": "Utica",
   "neighborhood": "Hall Road",
   "address": "8315 Hall Rd",
@@ -25,7 +31,7 @@
     "Family Owned Since 1956"
   ],
 
-  "statementHeading": "Since 1956, the same family recipes, the same fresh baked rolls, the same corner.",
+  "statementHeading": "Detroit style square pizza and the original Torpedo sub, on Hall Road in Utica since 1956.",
   "statementBody": "Paul A. Buscemi opened a small party store in Detroit and introduced the neighborhood to the Italian submarine sandwich. Three generations later, the Torpedo is still built the same way, and it is waiting for you on Hall Road.",
 
 

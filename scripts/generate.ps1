@@ -58,8 +58,14 @@ $siteUrl = ($store.siteUrl).TrimEnd('/')
 # like &amp; are NOT decoded, so encoded URLs would be corrupted there.
 $menuUrlRaw    = $store.menuUrl
 $listingUrlRaw = $store.googleListingUrl
-# schema.org opening hours (update alongside store.json "hours")
-$hoursSchemaJson = ($store.hoursSchema | ForEach-Object { '"' + $_ + '"' }) -join ", "
+
+# openingHoursSpecification blocks from store.json "hoursSpec" (Google's
+# documented format for LocalBusiness - update alongside "hours").
+$hoursSpecParts = foreach ($h in $store.hoursSpec) {
+  $days = ($h.days | ForEach-Object { '"' + $_ + '"' }) -join ", "
+  "{ `"@type`": `"OpeningHoursSpecification`", `"dayOfWeek`": [$days], `"opens`": `"$($h.opens)`", `"closes`": `"$($h.closes)`" }"
+}
+$hoursSpecJson = $hoursSpecParts -join ",`n      "
 
 $statementHeading = Encode-Html $store.statementHeading
 $statementBody    = Encode-Html $store.statementBody
@@ -99,6 +105,24 @@ if (Test-Path $galleryDir -PathType Container) {
   $files = Get-ChildItem -Path $galleryDir -File |
            Where-Object { $_.Extension -match '^\.(jpg|jpeg|png|webp)$' } |
            Sort-Object Name
+  # Intrinsic pixel dimensions per photo (keyed by filename) so every <img>
+  # ships width/height attributes - stops layout shift while images load
+  # (Core Web Vitals). Measured once per file; add a row when adding a photo.
+  # Unknown files simply omit the attributes.
+  $dimsMap = @{
+    "02-round-pizza.png"        = @(243, 244)
+    "04-round-pizza-box.webp"   = @(382, 510)
+    "05-pepperoni-sunlight.webp" = @(382, 510)
+    "06-bacon-pepperoni.webp"   = @(382, 510)
+    "07-cheese-bread-tray.webp" = @(236, 510)
+    "08-cheese-pizza.webp"      = @(382, 510)
+    "09-calzones.webp"          = @(382, 510)
+    "10-pepperoni-peel.webp"    = @(382, 510)
+    "11-detroit-square.webp"    = @(680, 510)
+    "12-mixed-pies.webp"        = @(382, 510)
+    "13-detroit-closeup.webp"   = @(382, 510)
+    "14-slices-box.webp"        = @(680, 510)
+  }
   # Descriptive alt text per photo (keyed by filename) - tells search engines
   # and screen readers what each shot actually shows. Falls back to a generic
   # line for any photo not in the map.
@@ -128,7 +152,12 @@ if (Test-Path $galleryDir -PathType Container) {
     if ($altMap.ContainsKey($base)) { $altText = $altMap[$base] }
     else { $altText = "The Original Buscemi's " + $store.city + " - photo " + $galleryCount }
     $alt = Encode-Html $altText
-    [void]$galleryHtml.AppendLine("        <li class=`"$cls`"><img src=`"$rel`" alt=`"$alt`" loading=`"lazy`"></li>")
+    $dims = ""
+    if ($dimsMap.ContainsKey($f.Name)) {
+      $d = $dimsMap[$f.Name]
+      $dims = " width=`"$($d[0])`" height=`"$($d[1])`""
+    }
+    [void]$galleryHtml.AppendLine("        <li class=`"$cls`"><img src=`"$rel`" alt=`"$alt`"$dims loading=`"lazy`"></li>")
   }
 }
 if ($galleryCount -eq 0) {
@@ -143,7 +172,8 @@ if ($galleryCount -eq 0) {
 $heroImg = FindImage "assets/hero"
 if ($heroImg) {
   $heroAlt = Encode-Html ("The Original Buscemi's " + $store.city + " " + $store.neighborhood)
-  $heroMedia = "<div class=`"hero__media`"><img src=`"$heroImg`" alt=`"$heroAlt`" fetchpriority=`"high`"></div>"
+  # NOTE: update these dims if the hero photo is ever replaced.
+  $heroMedia = "<div class=`"hero__media`"><img src=`"$heroImg`" alt=`"$heroAlt`" width=`"680`" height=`"510`" fetchpriority=`"high`"></div>"
 } else {
   $heroMedia = "<div class=`"hero__media hero__media--empty`" aria-hidden=`"true`"></div>"
 }
@@ -171,29 +201,42 @@ $indexBody = @"
   <title>Original Buscemi's - Hall Road, Utica</title>
   <meta name="description" content="The Original Buscemi's at $address in $cityState. Italian Torpedo subs, Detroit-style pizza, and Party Shoppe favorites since 1956. Call $phone.">
   <link rel="canonical" href="$siteUrl/">
+  <meta name="theme-color" content="#6E1F1F">
   <link rel="icon" type="image/png" sizes="144x144" href="assets/favicon.png">
-  <link rel="apple-touch-icon" href="assets/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="The Original Buscemi's">
   <meta property="og:title" content="Original Buscemi's - Hall Road, Utica">
   <meta property="og:description" content="Italian Torpedo subs, Detroit-style pizza, and Party Shoppe favorites since 1956. $address, $cityState.">
   <meta property="og:url" content="$siteUrl/">
-  <meta property="og:image" content="$siteUrl/assets/og-logo.png">
+  <meta property="og:image" content="$siteUrl/assets/og-logo.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="1200">
+  <meta property="og:image:alt" content="The Original Buscemi's logo">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:image" content="$siteUrl/assets/og-logo.png">
+  <meta name="twitter:image" content="$siteUrl/assets/og-logo.jpg">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Restaurant",
     "name": "The Original Buscemi's",
+    "description": "Family-owned pizza and sub shop and Party Shoppe on Hall Road in Utica, Michigan. Detroit-style square pizza, the original Torpedo sub, calzones, cheese bread, and a full liquor, beer, and wine selection since 1956.",
     "url": "$siteUrl/",
-    "image": "$siteUrl/assets/og-logo.png",
-    "logo": "$siteUrl/assets/og-logo.png",
+    "image": [
+      "$siteUrl/assets/seo/food-16x9.jpg",
+      "$siteUrl/assets/gallery/11-detroit-square.webp",
+      "$siteUrl/assets/seo/food-1x1.jpg"
+    ],
+    "logo": "$siteUrl/assets/og-logo.jpg",
     "telephone": "$tel",
     "priceRange": "$",
     "menu": "$menuUrlRaw",
-    "sameAs": ["$listingUrlRaw"],
-    "servesCuisine": ["Pizza", "Italian", "Sandwiches"],
+    "hasMap": "$listingUrlRaw",
+    "sameAs": [
+      "$($store.yelpUrl)",
+      "$($store.tripadvisorUrl)"
+    ],
+    "servesCuisine": ["Pizza", "Detroit-style pizza", "Italian", "Sandwiches"],
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "$address",
@@ -202,7 +245,14 @@ $indexBody = @"
       "postalCode": "48317",
       "addressCountry": "US"
     },
-    "openingHours": [$hoursSchemaJson],
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": $($store.geo.lat),
+      "longitude": $($store.geo.lng)
+    },
+    "openingHoursSpecification": [
+      $hoursSpecJson
+    ],
     "foundingDate": "1956"
   }
   </script>
@@ -218,7 +268,7 @@ $indexBody = @"
   <header class="site-header">
     <div class="container site-header__inner">
       <a class="site-header__logo" href="#top" aria-label="The Original Buscemi's home">
-        <img src="assets/logo-lockup-red.png" alt="The Original Buscemi's Party Shoppe Pizza">
+        <img src="assets/logo-lockup-red.png" alt="The Original Buscemi's Party Shoppe Pizza" width="847" height="328">
       </a>
       <div class="site-header__actions">
         <button class="btn btn--primary" type="button" data-nav-toggle aria-expanded="false" aria-controls="nav-panel">Menu</button>
@@ -247,7 +297,7 @@ $indexBody = @"
   <section class="hero" id="top">
     $heroMedia
     <div class="container hero__inner">
-      <img class="hero__mark" src="assets/logo.png" alt="The Original Buscemi's">
+      <img class="hero__mark" src="assets/logo.png" alt="The Original Buscemi's" width="847" height="328">
       <div class="hero__actions">
         <a class="btn btn--primary btn--lg" href="$orderUrl" target="_blank" rel="noopener">Order Online</a>
         <a class="btn btn--on-dark btn--lg" href="tel:$tel">Call $phone</a>
@@ -275,30 +325,54 @@ $tickerCopy
   <section class="statement" id="story">
     <div class="statement__prints" aria-hidden="true">
       <figure class="statement__print statement__print--l1">
-        <img src="assets/story/history-1.avif" alt="" loading="lazy">
+        <img src="assets/story/history-1.avif" alt="" width="320" height="301" loading="lazy">
       </figure>
       <figure class="statement__print statement__print--l2">
-        <img src="assets/story/history-4.png" alt="" loading="lazy">
+        <img src="assets/story/history-4.png" alt="" width="224" height="224" loading="lazy">
       </figure>
       <figure class="statement__print statement__print--l3">
-        <img src="assets/story/history-5-sketch.png?v=2" alt="" loading="lazy">
+        <img src="assets/story/history-5-sketch.png?v=2" alt="" width="312" height="352" loading="lazy">
       </figure>
       <figure class="statement__print statement__print--r1">
-        <img src="assets/story/history-2.avif" alt="" loading="lazy">
+        <img src="assets/story/history-2.avif" alt="" width="768" height="768" loading="lazy">
       </figure>
       <figure class="statement__print statement__print--r2">
-        <img src="assets/story/history-6-modelt.png?v=2" alt="" loading="lazy">
+        <img src="assets/story/history-6-modelt.png?v=2" alt="" width="257" height="178" loading="lazy">
       </figure>
       <figure class="statement__print statement__print--r3">
-        <img src="assets/story/history-7-building.png?v=2" alt="" loading="lazy">
+        <img src="assets/story/history-7-building.png?v=2" alt="" width="340" height="172" loading="lazy">
       </figure>
     </div>
     <div class="container container--narrow">
-      <img class="statement__mark" src="assets/logo-shield.png" alt="" aria-hidden="true">
+      <img class="statement__mark" src="assets/logo-shield.png" alt="" aria-hidden="true" width="208" height="322">
       <span class="eyebrow">Our Story</span>
       <h1 class="statement-title">$statementHeading</h1>
       <p class="statement__body">$statementBody</p>
       <a class="btn btn--primary btn--lg" href="$menuUrl" target="_blank" rel="noopener">View Menu</a>
+    </div>
+  </section>
+
+  <section class="section section--cream section--center" id="detroit-style">
+    <div class="container container--narrow">
+      <span class="eyebrow">The Square</span>
+      <h2 class="section-title">What is Detroit style pizza?</h2>
+      <hr class="rule">
+      <p class="square__copy">Detroit style pizza is a square, deep pan pizza with a light, airy crumb and a crispy, caramelized cheese edge. The cheese goes all the way to the corners of the steel pan, and the sauce goes on top &mdash; that red stripe over the cheese is the signature. It was invented in Detroit in the 1940s, and it is the pizza this family has been baking since 1956.</p>
+      <p class="square__copy">Ours is hand stretched and baked fresh every day at $address in Utica, just off M-59 and minutes from Sterling Heights, Shelby Township, and Clinton Township. Grab it hot and ready, or call ahead at <a href="tel:$tel">$phone</a>.</p>
+
+      <div class="faq">
+        <h3 class="faq__q">Do you deliver?</h3>
+        <p class="faq__a">Yes &mdash; order for delivery or pickup through our <a href="$orderUrl" target="_blank" rel="noopener">online ordering page</a>, or call the store at <a href="tel:$tel">$phone</a>.</p>
+
+        <h3 class="faq__q">What is a Torpedo&reg; sub?</h3>
+        <p class="faq__a">The Torpedo is the Italian submarine sandwich Paul A. Buscemi introduced to Detroit in 1956 &mdash; Italian cold cuts stacked on a fresh baked roll with lettuce, tomato, onion, and oil &amp; vinegar. It comes as a Baby Sub, a full Torpedo, or a party tray.</p>
+
+        <h3 class="faq__q">Do you sell beer, wine, and liquor?</h3>
+        <p class="faq__a">Yes. The Party Shoppe side of the store carries a full selection of liquor, beer, and wine, plus snacks and grocery essentials &mdash; one stop for game night.</p>
+
+        <h3 class="faq__q">Do you cater parties and offices?</h3>
+        <p class="faq__a">We do &mdash; Torpedo trays, party pizzas, salads, and dessert trays for groups of any size. Call <a href="tel:$tel">$phone</a> to plan your order.</p>
+      </div>
     </div>
   </section>
 
@@ -320,7 +394,7 @@ $($galleryHtml.ToString())
     <div class="container visit__inner">
       <div class="visit__info">
         <span class="eyebrow">Find Us</span>
-        <h2 class="section-title">Stop in.</h2>
+        <h2 class="section-title">Visit Us in Utica, MI</h2>
         <hr class="rule rule--left">
         <dl class="visit__details">
           <div>
@@ -384,7 +458,7 @@ $($hoursRows.ToString())
     <div class="container">
       <div class="site-footer__top">
         <div class="site-footer__brand">
-          <img src="assets/logo.png" alt="The Original Buscemi's">
+          <img src="assets/logo.png" alt="The Original Buscemi's" width="847" height="328">
         </div>
         <div class="site-footer__col">
           <h2><a href="#visit">Contact</a></h2>
