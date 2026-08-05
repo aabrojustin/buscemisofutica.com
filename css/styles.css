@@ -467,13 +467,20 @@ p { margin: 0 0 1rem; }
 .statement__print--l2 { left: 2.5%; top: 38%;   transform: rotate(3deg); }
 .statement__print--l3 { left: 1%;   bottom: 3%; transform: rotate(-4deg); }
 .statement__print--r1 { right: 1%;   top: 3%;    transform: rotate(4deg); }
-.statement__print--r2 { right: 2.5%; top: 38%;   transform: rotate(-3deg); }
+.statement__print--r2 { right: 2.5%; top: 42%;   transform: rotate(-3deg); }
 .statement__print--r3 { right: 1%;   bottom: 3%; transform: rotate(5deg); }
 
+/* The two landscape photos are short at standard width, which left a hole in
+   the right column - render them wider so their height fills it. Widths are
+   capped at each photo's native resolution so nothing gets upscaled soft:
+   the Model T source is 257px wide, the building 386px. */
 .statement__print--l2 img,
-.statement__print--r2 img,
-.statement__print--l3 img,
-.statement__print--r3 img { width: clamp(150px, 13vw, 200px); }
+.statement__print--l3 img { width: clamp(150px, 13vw, 200px); }
+
+/* Landscape photos on the right run wider so their height fills the column
+   (capped at native resolution: Model T 257px, building 340px source). */
+.statement__print--r2 img { width: clamp(200px, 18vw, 255px); }
+.statement__print--r3 img { width: clamp(250px, 22vw, 320px); }
 
 @media (max-width: 1100px) {
   .statement__print { display: none; }
