@@ -357,21 +357,21 @@ $tickerCopy
       <span class="eyebrow">The Square</span>
       <h2 class="section-title">What is Detroit style pizza?</h2>
       <hr class="rule">
-      <p class="square__copy">Detroit style pizza is a square, deep pan pizza with a light, airy crumb and a crispy, caramelized cheese edge. The cheese goes all the way to the corners of the steel pan, and the sauce goes on top &mdash; that red stripe over the cheese is the signature. It was invented in Detroit in the 1940s, and it is the pizza this family has been baking since 1956.</p>
+      <p class="square__copy">Detroit style pizza is a square, deep pan pizza with a light, airy crumb and a crispy, caramelized cheese edge. The cheese goes all the way to the corners of the steel pan, and the sauce goes on top. That red stripe over the cheese is the signature. It was invented in Detroit in the 1940s, and it is the pizza this family has been baking since 1956.</p>
       <p class="square__copy">Ours is hand stretched and baked fresh every day at $address in Utica, just off M-59 and minutes from Sterling Heights, Shelby Township, and Clinton Township. Grab it hot and ready, or call ahead at <a href="tel:$tel">$phone</a>.</p>
 
       <div class="faq">
         <h3 class="faq__q">Do you deliver?</h3>
-        <p class="faq__a">Yes &mdash; order for delivery or pickup through our <a href="$orderUrl" target="_blank" rel="noopener">online ordering page</a>, or call the store at <a href="tel:$tel">$phone</a>.</p>
+        <p class="faq__a">Yes. Order for delivery or pickup through our <a href="$orderUrl" target="_blank" rel="noopener">online ordering page</a>, or call the store at <a href="tel:$tel">$phone</a>.</p>
 
         <h3 class="faq__q">What is a Torpedo&reg; sub?</h3>
-        <p class="faq__a">The Torpedo is the Italian submarine sandwich Paul A. Buscemi introduced to Detroit in 1956 &mdash; Italian cold cuts stacked on a fresh baked roll with lettuce, tomato, onion, and oil &amp; vinegar. It comes as a Baby Sub, a full Torpedo, or a party tray.</p>
+        <p class="faq__a">The Torpedo is the Italian submarine sandwich Paul A. Buscemi introduced to Detroit in 1956. It stacks Italian cold cuts on a fresh baked roll with lettuce, tomato, onion, and oil &amp; vinegar. It comes as a Baby Sub, a full Torpedo, or a party tray.</p>
 
         <h3 class="faq__q">Do you sell beer, wine, and liquor?</h3>
-        <p class="faq__a">Yes. The Party Shoppe side of the store carries a full selection of liquor, beer, and wine, plus snacks and grocery essentials &mdash; one stop for game night.</p>
+        <p class="faq__a">Yes. The Party Shoppe side of the store carries a full selection of liquor, beer, and wine, plus snacks and grocery essentials. One stop for game night.</p>
 
         <h3 class="faq__q">Do you cater parties and offices?</h3>
-        <p class="faq__a">We do &mdash; Torpedo trays, party pizzas, salads, and dessert trays for groups of any size. Call <a href="tel:$tel">$phone</a> to plan your order.</p>
+        <p class="faq__a">We do. Torpedo trays, party pizzas, salads, and dessert trays for groups of any size. Call <a href="tel:$tel">$phone</a> to plan your order.</p>
       </div>
     </div>
   </section>
@@ -437,7 +437,7 @@ $($galleryHtml.ToString())
             src="https://www.google.com/maps?q=$mapQuery&amp;output=embed"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
-            title="Map of The Original Buscemi's $city &mdash; $nbhd"></iframe>
+            title="Map of The Original Buscemi's $city, $nbhd"></iframe>
         </div>
         <div class="visit__hours" id="hours">
           <span class="eyebrow">When we're open</span>
@@ -446,7 +446,7 @@ $($galleryHtml.ToString())
 $($hoursRows.ToString())
             </tbody>
           </table>
-          <p class="hours__note hours__note--left">Holiday hours may vary &mdash; please call ahead to confirm.</p>
+          <p class="hours__note hours__note--left">Holiday hours may vary. Please call ahead to confirm.</p>
         </div>
       </div>
     </div>
