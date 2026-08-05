@@ -147,7 +147,7 @@ $indexBody = @"
   <title>Original Buscemi's - Hall Road, Utica</title>
   <meta name="description" content="The Original Buscemi's at $address in $cityState. Italian Torpedo subs, Detroit-style pizza, and Party Shoppe favorites since 1956. Call $phone.">
   <link rel="canonical" href="$siteUrl/">
-  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="icon" type="image/png" sizes="144x144" href="assets/favicon.png">
   <link rel="apple-touch-icon" href="assets/favicon.png">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="The Original Buscemi's">
