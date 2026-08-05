@@ -489,7 +489,8 @@ p { margin: 0 0 1rem; }
 
 .statement__body {
   font-size: clamp(1rem, 1.6vw, 1.125rem);
-  color: var(--brand-muted);
+  font-weight: 600;
+  color: var(--brand-black);
   max-width: 62ch;
   margin: 0 auto 2.25rem;
 }
