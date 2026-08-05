@@ -854,17 +854,16 @@ p { margin: 0 0 1rem; }
 
 .site-footer__bottom .site-footer__contact-lines { margin-top: 0; }
 
-/* Hierarchy: the phone line is the action, so it alone gets the bright red.
-   The address is information - burgundy, a step smaller. */
-.site-footer__bottom .site-footer__contact-lines p { color: var(--brand-red); }
+/* Everything in the white strip is burgundy - one calm closing color. The
+   address steps down a size so the phone line still leads. */
+.site-footer__bottom .site-footer__contact-lines p { color: var(--brand-burgundy); }
 .site-footer__bottom .site-footer__contact-lines p + p {
-  color: var(--brand-burgundy);
   font-size: clamp(1.0625rem, 2.55vw, 1.7rem);
 }
-.site-footer__bottom .site-footer__contact-lines a:hover { color: var(--brand-red-deep); }
+.site-footer__bottom .site-footer__contact-lines a:hover { color: var(--brand-red); }
 
 .site-footer__bottom .site-footer__meta {
-  color: var(--brand-muted);
+  color: var(--brand-burgundy);
   margin-top: 3.25rem;
 }
 
