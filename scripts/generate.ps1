@@ -390,7 +390,7 @@ $($galleryHtml.ToString())
     </div>
   </section>
 
-  <section class="section section--visit" id="visit">
+  <section class="section section--cream" id="visit">
     <div class="container visit__inner">
       <div class="visit__info">
         <span class="eyebrow">Find Us</span>
