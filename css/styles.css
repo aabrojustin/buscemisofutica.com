@@ -853,8 +853,8 @@ p { margin: 0 0 1rem; }
 }
 
 .site-footer__bottom .site-footer__contact-lines { margin-top: 0; }
-.site-footer__bottom .site-footer__contact-lines p { color: var(--brand-burgundy); }
-.site-footer__bottom .site-footer__contact-lines a:hover { color: var(--brand-red); }
+.site-footer__bottom .site-footer__contact-lines p { color: var(--brand-red); }
+.site-footer__bottom .site-footer__contact-lines a:hover { color: var(--brand-red-deep); }
 .site-footer__bottom .site-footer__meta { color: var(--brand-muted); }
 
 .site-footer__brand img { width: 180px; }
