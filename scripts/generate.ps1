@@ -272,7 +272,6 @@ $indexBody = @"
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@700;900&family=Archivo:wght@400;500;600;700&display=swap">
-  <link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">
   <link rel="stylesheet" href="css/styles.css?v=$cssVer">
 </head>
 <body>
@@ -446,7 +445,13 @@ $($galleryHtml.ToString())
         </div>
       </div>
       <div class="visit__side">
-        <div class="visit__map" id="store-map" role="img" aria-label="Map of The Original Buscemi's at $address, $cityState"></div>
+        <div class="visit__map">
+          <iframe
+            src="https://www.google.com/maps?q=$mapQuery&amp;output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Map of The Original Buscemi's $city, $nbhd"></iframe>
+        </div>
         <div class="visit__hours" id="hours">
           <span class="eyebrow">When we're open</span>
           <table class="hours__table hours__table--left">
@@ -493,28 +498,6 @@ $followCol
   </footer>
 
   <script src="js/main.js?v=$jsVer"></script>
-  <script src="assets/vendor/leaflet/leaflet.js" defer></script>
-  <script>
-    // Store map: self-hosted Leaflet + OpenStreetMap tiles, shield-logo pin.
-    window.addEventListener("DOMContentLoaded", function () {
-      if (!window.L) return;
-      var lat = $($store.geo.lat), lng = $($store.geo.lng);
-      var map = L.map("store-map", { scrollWheelZoom: false }).setView([lat, lng], 16);
-      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 19,
-        attribution: "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
-      }).addTo(map);
-      var icon = L.icon({
-        iconUrl: "assets/logo-shield.png",
-        iconSize: [44, 68],
-        iconAnchor: [22, 68],
-        popupAnchor: [0, -70]
-      });
-      L.marker([lat, lng], { icon: icon, title: "The Original Buscemi's" })
-        .addTo(map)
-        .bindPopup("<strong>The Original Buscemi&rsquo;s</strong><br>$address, $cityState<br><a href='https://www.google.com/maps/search/?api=1&query=$mapQuery' target='_blank' rel='noopener'>Get Directions</a>");
-    });
-  </script>
 </body>
 </html>
 "@

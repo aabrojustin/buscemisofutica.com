@@ -878,7 +878,7 @@ p { margin: 0 0 1rem; }
   font-size: 0.8125rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--brand-muted);
+  color: var(--brand-black);
   transition: color var(--transition);
 }
 
