@@ -246,6 +246,21 @@ p { margin: 0 0 1rem; }
   gap: 0.625rem;
 }
 
+/* Phone number to the left of the Menu button: same small-caps voice as the
+   buttons, no box, tap-to-call. */
+.site-header__phone {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--brand-burgundy);
+  margin-right: 0.5rem;
+  white-space: nowrap;
+  transition: color var(--transition);
+}
+
+.site-header__phone:hover { color: var(--brand-red); }
+
 /* Compact header buttons */
 .site-header__actions .btn {
   padding: 0.7rem 1.35rem;
@@ -892,6 +907,7 @@ p { margin: 0 0 1rem; }
 @media (max-width: 640px) {
   .site-header__logo img { height: 40px; }
   .site-header__actions .btn { padding: 0.6rem 0.9rem; font-size: 0.625rem; letter-spacing: 0.08em; }
+  .site-header__phone { font-size: 0.6875rem; letter-spacing: 0.06em; margin-right: 0.25rem; }
   .hero__badges { gap: 0.5rem 1.5rem; }
   .site-footer__top { grid-template-columns: 1fr; text-align: center; }
   .site-footer__brand img { margin-inline: auto; }
