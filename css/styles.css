@@ -875,7 +875,10 @@ p { margin: 0 0 1rem; }
 .site-footer__col li { margin-bottom: 0.4rem; }
 
 .site-footer__col a {
-  font-size: 0.8125rem;
+  /* Same face as the CONTACT / MENU headings above */
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9375rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--brand-black);
