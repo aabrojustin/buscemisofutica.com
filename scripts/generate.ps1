@@ -298,7 +298,6 @@ $indexBody = @"
   <section class="hero" id="top">
     $heroMedia
     <div class="container hero__inner">
-      <img class="hero__mark" src="assets/logo.png" alt="The Original Buscemi's" width="847" height="328">
       <div class="hero__actions">
         <a class="btn btn--primary btn--lg" href="$orderUrl" target="_blank" rel="noopener">Order Online</a>
         <a class="btn btn--on-dark btn--lg" href="tel:$tel">Call $phone</a>
