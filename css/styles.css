@@ -341,9 +341,8 @@ p { margin: 0 0 1rem; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Gentle photographic grade: lifts the overcast flatness of the source
-     shot without tipping into a filtered look. */
-  filter: saturate(1.14) contrast(1.07) brightness(1.02);
+  /* No filter: the hero is a properly exposed camera shot now. The old
+     saturation/contrast grade existed to rescue a hazy 680px web save. */
 }
 
 .hero__media::after {

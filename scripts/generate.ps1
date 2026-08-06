@@ -173,7 +173,7 @@ $heroImg = FindImage "assets/hero"
 if ($heroImg) {
   $heroAlt = Encode-Html ("The Original Buscemi's " + $store.city + " " + $store.neighborhood)
   # NOTE: update these dims if the hero photo is ever replaced.
-  $heroMedia = "<div class=`"hero__media`"><img src=`"$heroImg`" alt=`"$heroAlt`" width=`"680`" height=`"510`" fetchpriority=`"high`"></div>"
+  $heroMedia = "<div class=`"hero__media`"><img src=`"$heroImg`" alt=`"$heroAlt`" width=`"3255`" height=`"1536`" fetchpriority=`"high`"></div>"
 } else {
   $heroMedia = "<div class=`"hero__media hero__media--empty`" aria-hidden=`"true`"></div>"
 }
