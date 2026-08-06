@@ -90,8 +90,13 @@ foreach ($h in $store.hours) {
 # only announce the phrases once.
 $tickerOnce = New-Object System.Text.StringBuilder
 foreach ($t in $store.ticker) {
-  $tx = Encode-Html $t
-  [void]$tickerOnce.AppendLine("        <span class=`"ticker__item`">$tx</span>")
+  if ($t -eq "@logo") {
+    # The white-script lockup rides in the ticker as an image item.
+    [void]$tickerOnce.AppendLine("        <span class=`"ticker__item ticker__item--logo`"><img src=`"assets/logo.png`" alt=`"The Original Buscemi's`" width=`"847`" height=`"328`"></span>")
+  } else {
+    $tx = Encode-Html $t
+    [void]$tickerOnce.AppendLine("        <span class=`"ticker__item`">$tx</span>")
+  }
 }
 $tickerCopy = $tickerOnce.ToString()
 
@@ -458,7 +463,7 @@ $($hoursRows.ToString())
     <div class="container">
       <div class="site-footer__top">
         <div class="site-footer__brand">
-          <img src="assets/logo.png" alt="The Original Buscemi's" width="847" height="328">
+          <img src="assets/logo-lockup-red.png" alt="The Original Buscemi's" width="847" height="328">
         </div>
         <div class="site-footer__col">
           <h2><a href="#visit">Contact</a></h2>

@@ -413,6 +413,14 @@ p { margin: 0 0 1rem; }
   white-space: nowrap;
 }
 
+/* The lockup image riding among the phrases: sized to the text line so the
+   band keeps its height. Width/height attrs pin the aspect before load. */
+.ticker__item--logo img {
+  display: block;
+  height: 2.1rem;
+  width: auto;
+}
+
 /* The track holds FOUR identical copies of the phrase list, so shifting by
    exactly one copy (-25%) loops seamlessly - and the remaining three copies
    keep even the widest viewport covered right up to the reset instant. */
@@ -823,9 +831,10 @@ p { margin: 0 0 1rem; }
    ========================================================================== */
 
 .site-footer {
-  background: var(--brand-burgundy);
-  color: var(--brand-white);
+  background: var(--brand-white);
+  color: var(--brand-black);
   padding-top: clamp(3rem, 7vw, 5rem);
+  border-top: 1px solid var(--brand-cream-dark);
 }
 
 .site-footer__top {
@@ -841,10 +850,10 @@ p { margin: 0 0 1rem; }
   font-size: clamp(1.5rem, 2.6vw, 1.875rem);
   font-weight: 900;
   margin-bottom: 0.75rem;
-  color: var(--brand-white);
+  color: var(--brand-burgundy);
 }
 
-.site-footer__col h2 a:hover { color: var(--brand-gold); }
+.site-footer__col h2 a:hover { color: var(--brand-red); }
 
 .site-footer__col ul { list-style: none; margin: 0; padding: 0; }
 
@@ -854,11 +863,11 @@ p { margin: 0 0 1rem; }
   font-size: 0.8125rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--brand-muted);
   transition: color var(--transition);
 }
 
-.site-footer__col a:hover { color: var(--brand-gold); }
+.site-footer__col a:hover { color: var(--brand-red); }
 
 
 .site-footer__meta {
@@ -867,7 +876,7 @@ p { margin: 0 0 1rem; }
   font-size: 0.6875rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--brand-muted);
 }
 
 /* ==========================================================================
