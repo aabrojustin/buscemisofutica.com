@@ -281,7 +281,8 @@ $indexBody = @"
   <header class="site-header">
     <div class="container site-header__inner">
       <a class="site-header__logo" href="#top" aria-label="The Original Buscemi's home">
-        <img src="assets/logo-lockup-red.png" alt="The Original Buscemi's Party Shoppe Pizza" width="847" height="328">
+        <img class="site-header__logo-full" src="assets/logo-lockup-red.png" alt="The Original Buscemi's Party Shoppe Pizza" width="847" height="328">
+        <img class="site-header__logo-mini" src="assets/logo-shield.png" alt="The Original Buscemi's" width="208" height="322">
       </a>
       <div class="site-header__actions">
         <a class="site-header__phone" href="tel:$tel">$phone</a>
