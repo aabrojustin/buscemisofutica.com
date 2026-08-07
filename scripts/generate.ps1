@@ -186,7 +186,9 @@ $heroImg = FindImage "assets/hero"
 if ($heroImg) {
   $heroAlt = Encode-Html ("The Original Buscemi's " + $store.city + " " + $store.neighborhood)
   # NOTE: update these dims if the hero photo is ever replaced.
-  $heroMedia = "<div class=`"hero__media`"><img src=`"$heroImg`" alt=`"$heroAlt`" width=`"3255`" height=`"1536`" fetchpriority=`"high`"></div>"
+  # Art direction: phones get a purpose-cropped portrait of the storefront
+  # (assets/hero-mobile.jpg) instead of a brutal center-crop of the panorama.
+  $heroMedia = "<div class=`"hero__media`"><picture><source media=`"(max-width: 640px)`" srcset=`"assets/hero-mobile.jpg`" width=`"1140`" height=`"1536`"><img src=`"$heroImg`" alt=`"$heroAlt`" width=`"3255`" height=`"1536`" fetchpriority=`"high`"></picture></div>"
 } else {
   $heroMedia = "<div class=`"hero__media hero__media--empty`" aria-hidden=`"true`"></div>"
 }
