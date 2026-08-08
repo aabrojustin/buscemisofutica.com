@@ -518,6 +518,20 @@ p { margin: 0 0 1rem; }
   .statement__print { display: none; }
 }
 
+/* While the prints are visible, the title must fit the corridor between the
+   two photo stacks. The deepest inward reach is r2: 2.5% inset + 18vw photo
+   + mat, so cap the line at the space that leaves, with breathing room -
+   the 940px column alone overruns the prints on mid-width screens. */
+@media (min-width: 1101px) {
+  .statement-title {
+    max-width: min(100%, 59vw - 64px);
+    margin-inline: auto;
+    /* Track the corridor: full 60px type in a 614px column stacks 5 lines,
+       so let the size ride 4.6vw until the cap - keeps the wrap at 4 lines. */
+    font-size: clamp(2rem, 4.6vw, 3.75rem);
+  }
+}
+
 .statement {
   position: relative;
   overflow: hidden; /* clips the edge-bleeding prints, no sideways scroll */
