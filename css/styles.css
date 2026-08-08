@@ -440,7 +440,6 @@ p { margin: 0 0 1rem; }
   color: var(--brand-white);
   padding-block: 0.9rem;
   overflow: hidden;
-  border-block: 3px solid var(--brand-burgundy);
 }
 
 .ticker__track {
