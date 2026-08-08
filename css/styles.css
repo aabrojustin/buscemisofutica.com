@@ -432,6 +432,93 @@ p { margin: 0 0 1rem; }
 }
 
 /* ==========================================================================
+   Party Shoppe page - card grid for the shelves section, plus centered
+   button rows and a left-aligned FAQ variant reused by subpages.
+   ========================================================================== */
+
+.shoppe-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+@media (max-width: 760px) {
+  .shoppe-grid { grid-template-columns: 1fr; }
+}
+
+.shoppe-card {
+  background: var(--brand-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  overflow: hidden; /* keeps the photo corners inside the card radius */
+}
+
+.shoppe-card__photo {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.shoppe-card__body { padding: 1.5rem; }
+
+.shoppe-card h3 {
+  font-size: 1.35rem;
+  color: var(--brand-burgundy);
+  margin-bottom: 0.5rem;
+}
+
+.shoppe-card p { margin: 0; color: var(--brand-black); }
+
+.actions--center { justify-content: center; }
+
+.faq--left { text-align: left; }
+
+/* Photo-beside-text row for the party-tray list: portrait food shot on the
+   left, tray descriptions on the right; stacks on narrow screens. */
+.tray-media {
+  display: grid;
+  grid-template-columns: minmax(260px, 340px) 1fr;
+  gap: 2.25rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.tray-media__photo {
+  margin: 0;
+}
+
+.tray-media__photo img {
+  width: 100%;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.tray-media__copy {
+  text-align: left;
+}
+
+.tray-media__copy h3 {
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  color: var(--brand-burgundy);
+  margin-bottom: 0.75rem;
+}
+
+.tray-media__copy p {
+  margin-bottom: 1.75rem;
+}
+
+@media (max-width: 760px) {
+  .tray-media { grid-template-columns: 1fr; }
+  .tray-media__photo { max-width: 340px; margin: 0 auto; }
+  .tray-media__copy { text-align: center; }
+  .tray-media__copy .visit__actions { justify-content: center; }
+}
+
+/* ==========================================================================
    Ticker - continuously scrolling band of short brand phrases.
    ========================================================================== */
 

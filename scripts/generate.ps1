@@ -268,7 +268,14 @@ $indexBody = @"
     "openingHoursSpecification": [
       $hoursSpecJson
     ],
-    "foundingDate": "1956"
+    "foundingDate": "1956",
+    "department": {
+      "@type": "LiquorStore",
+      "name": "Buscemi's Party Shoppe",
+      "url": "$siteUrl/party-shoppe/",
+      "telephone": "$tel",
+      "priceRange": "$"
+    }
   }
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -300,6 +307,7 @@ $indexBody = @"
       <ul class="nav-panel__list">
         <li><a href="$menuUrl" target="_blank" rel="noopener">Menu</a></li>
         <li><a href="#story" data-nav-link>Our Story</a></li>
+        <li><a href="party-shoppe/">Party Shoppe</a></li>
         <li><a href="#visit" data-nav-link>Visit</a></li>
         <li><a href="#hours" data-nav-link>Hours</a></li>
         <li><a href="#reviews" data-nav-link>Reviews</a></li>
@@ -488,6 +496,7 @@ $($hoursRows.ToString())
           <ul>
             <li><a href="$orderUrl" target="_blank" rel="noopener">Order Online</a></li>
             <li><a href="$menuUrl" target="_blank" rel="noopener">See the full menu</a></li>
+            <li><a href="party-shoppe/">Party Shoppe</a></li>
           </ul>
         </div>
 $followCol
@@ -514,6 +523,11 @@ $sitemap = @"
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>$siteUrl/</loc>
+    <lastmod>$today</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>$siteUrl/party-shoppe/</loc>
     <lastmod>$today</lastmod>
     <changefreq>monthly</changefreq>
   </url>
