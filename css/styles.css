@@ -195,6 +195,18 @@ p { margin: 0 0 1rem; }
 }
 .btn--primary:hover { background: var(--brand-red-deep); border-color: var(--brand-red-deep); }
 
+/* Solid green action, the Italian flag accent from the brand palette */
+.btn--green {
+  background: var(--brand-green);
+  color: var(--brand-white);
+  border-color: var(--brand-green);
+}
+
+.btn--green:hover {
+  background: var(--brand-green-dark);
+  border-color: var(--brand-green-dark);
+}
+
 .btn--outline {
   background: transparent;
   color: var(--brand-red);
