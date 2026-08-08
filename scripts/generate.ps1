@@ -315,7 +315,7 @@ $indexBody = @"
     $heroMedia
     <div class="container hero__inner">
       <div class="hero__actions">
-        <a class="btn btn--primary btn--lg" href="$orderUrl" target="_blank" rel="noopener">Order Online</a>
+        <a class="btn btn--green btn--lg" href="$orderUrl" target="_blank" rel="noopener">Order Online</a>
         <a class="btn btn--on-dark btn--lg" href="tel:$tel">Call $phone</a>
       </div>
     </div>

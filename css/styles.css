@@ -164,8 +164,8 @@ p { margin: 0 0 1rem; }
 .section--center { text-align: center; }
 
 /* ---------- Buttons ----------
-   Small, boxy, uppercase. Solid red is the primary action; the outline
-   variant is the quieter second option. */
+   Small, boxy, uppercase. Solid GREEN is the primary action everywhere (the
+   Italian flag accent); the outline variant is the quieter second option. */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -188,20 +188,14 @@ p { margin: 0 0 1rem; }
 .btn:hover { transform: translateY(-1px); }
 .btn:focus-visible { outline: 3px solid var(--brand-gold); outline-offset: 2px; }
 
-.btn--primary {
-  background: var(--brand-red);
-  color: var(--brand-white);
-  border-color: var(--brand-red);
-}
-.btn--primary:hover { background: var(--brand-red-deep); border-color: var(--brand-red-deep); }
-
-/* Solid green action, the Italian flag accent from the brand palette */
+.btn--primary,
 .btn--green {
   background: var(--brand-green);
   color: var(--brand-white);
   border-color: var(--brand-green);
 }
 
+.btn--primary:hover,
 .btn--green:hover {
   background: var(--brand-green-dark);
   border-color: var(--brand-green-dark);
