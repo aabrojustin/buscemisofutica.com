@@ -16,8 +16,9 @@
   --brand-red-deep: #A8181F;
   --brand-gold: #F2C94C;
   --brand-gold-dark: #C99A1F;
-  --brand-green: #2E7D32;
-  --brand-green-dark: #1F5C24;
+  /* Sampled from the shield logo's garnish green (dominant pixel shade) */
+  --brand-green: #0B7B3E;
+  --brand-green-dark: #075C2E;
   --brand-cream: #F8F1DE;
   --brand-cream-dark: #EDE3C5;
   --brand-black: #1A1A1A;
@@ -199,6 +200,18 @@ p { margin: 0 0 1rem; }
 .btn--green:hover {
   background: var(--brand-green-dark);
   border-color: var(--brand-green-dark);
+}
+
+/* The header's Menu button stays the original red so the two header actions
+   read as distinct: red opens the menu, green goes to ordering. */
+.site-header__actions .btn--primary {
+  background: var(--brand-red);
+  border-color: var(--brand-red);
+}
+
+.site-header__actions .btn--primary:hover {
+  background: var(--brand-red-deep);
+  border-color: var(--brand-red-deep);
 }
 
 .btn--outline {
