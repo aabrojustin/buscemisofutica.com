@@ -634,6 +634,7 @@ p { margin: 0 0 1rem; }
 .menu-page .rule { text-align: center; }
 
 .menu-page__note {
+  text-align: center;
   margin-top: 1.5rem;
   font-size: 0.9rem;
   color: var(--brand-charcoal);
