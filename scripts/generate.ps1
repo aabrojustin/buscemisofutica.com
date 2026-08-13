@@ -296,8 +296,9 @@ $indexBody = @"
       </a>
       <div class="site-header__actions">
         <a class="site-header__phone" href="tel:$tel">$phone</a>
-        <button class="btn btn--primary" type="button" data-nav-toggle aria-expanded="false" aria-controls="nav-panel">Menu</button>
+        <a class="btn btn--primary" href="menu/">Menu</a>
         <a class="btn btn--green" href="$orderUrl" target="_blank" rel="noopener">Order Online</a>
+        <button class="site-header__burger" type="button" data-nav-toggle aria-expanded="false" aria-controls="nav-panel" aria-label="Open navigation">&#9776;</button>
       </div>
     </div>
   </header>

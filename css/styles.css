@@ -252,6 +252,29 @@ p { margin: 0 0 1rem; }
   min-height: 74px;
 }
 
+/* Hamburger toggle for the nav overlay - the word "Menu" in the header now
+   means the food menu page, so site navigation lives behind this icon. */
+.site-header__burger {
+  background: transparent;
+  border: 0;
+  padding: 0.35rem 0.5rem;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--brand-burgundy);
+  border-radius: var(--radius-sm);
+  transition: color var(--transition), background var(--transition);
+}
+
+.site-header__burger:hover {
+  color: var(--brand-red);
+  background: var(--brand-cream);
+}
+
+.site-header__burger:focus-visible {
+  outline: 3px solid var(--brand-gold);
+  outline-offset: 2px;
+}
+
 /* The full brand lockup (shield + script), recolored to the brand red so the
    script survives the white header - logo-lockup-red.png is generated from
    logo.png, whose original script is white. On small screens the lockup gets
@@ -562,7 +585,7 @@ p { margin: 0 0 1rem; }
    chalkboard logo header. */
 .menu-item--thumb {
   display: grid;
-  grid-template-columns: 128px minmax(0, 1fr);
+  grid-template-columns: 180px minmax(0, 1fr);
   column-gap: 1.25rem;
 }
 
@@ -572,11 +595,17 @@ p { margin: 0 0 1rem; }
 .menu-item__thumb {
   grid-column: 1;
   grid-row: 1 / span 3;
-  width: 128px;
-  height: 128px;
+  width: 180px;
+  height: 122px;
   object-fit: cover;
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-card);
+}
+
+.menu-item h3 a:hover {
+  color: var(--brand-red);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .menu-item h3 {
@@ -738,6 +767,22 @@ p { margin: 0 0 1rem; }
 }
 
 .statement > .container { position: relative; z-index: 1; }
+
+/* Compact variant for utility pages (menu): same voice, half the ceremony -
+   smaller line, tighter padding, no shield mark, so content starts high. */
+.statement--compact { padding-block: clamp(2rem, 4vw, 3rem); }
+
+.statement--compact .statement-title {
+  font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+  margin-bottom: 0.75rem;
+}
+
+.statement--compact .statement__body {
+  margin-bottom: 0;
+  font-size: 1rem;
+}
+
+.statement--compact .statement__body a { text-decoration: underline; text-underline-offset: 3px; }
 
 .statement__body {
   font-size: clamp(1rem, 1.6vw, 1.125rem);
