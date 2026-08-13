@@ -519,6 +519,98 @@ p { margin: 0 0 1rem; }
 }
 
 /* ==========================================================================
+   Menu page - category blocks with a two-column item grid, optional
+   section photo, and small size lines in place of prices.
+   ========================================================================== */
+
+.menu-cat { margin-bottom: 3.5rem; }
+.menu-cat:last-of-type { margin-bottom: 2rem; }
+
+.menu-cat__photo {
+  margin: 0 auto 2rem;
+  max-width: 420px;
+}
+
+.menu-cat__photo img {
+  width: 100%;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.menu-cat__note {
+  font-weight: 600;
+  color: var(--brand-red);
+  margin-bottom: 1.5rem;
+}
+
+.menu-items {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem 2.75rem;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+@media (max-width: 700px) {
+  .menu-items { grid-template-columns: 1fr; }
+}
+
+/* Item thumbnail from the shop's branded food photography: small square
+   crop biased toward the lower half, where the food sits under the
+   chalkboard logo header. */
+.menu-item--thumb {
+  display: grid;
+  grid-template-columns: 128px minmax(0, 1fr);
+  column-gap: 1.25rem;
+}
+
+.menu-item--thumb h3,
+.menu-item--thumb p { grid-column: 2; }
+
+.menu-item__thumb {
+  grid-column: 1;
+  grid-row: 1 / span 3;
+  width: 128px;
+  height: 128px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+}
+
+.menu-item h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--brand-burgundy);
+  margin-bottom: 0.3rem;
+}
+
+.menu-item__desc {
+  margin-bottom: 0.35rem;
+  color: var(--brand-black);
+}
+
+.menu-item__sizes {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--brand-red);
+  margin-bottom: 0;
+}
+
+.menu-page .section-title,
+.menu-page .rule { text-align: center; }
+
+.menu-page__note {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--brand-charcoal);
+}
+
+/* ==========================================================================
    Ticker - continuously scrolling band of short brand phrases.
    ========================================================================== */
 

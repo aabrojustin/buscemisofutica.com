@@ -245,7 +245,8 @@ $indexBody = @"
     "logo": "$siteUrl/assets/og-logo.jpg",
     "telephone": "$tel",
     "priceRange": "$",
-    "menu": "$menuUrlRaw",
+    "menu": "$siteUrl/menu/",
+    "hasMenu": "$siteUrl/menu/",
     "hasMap": "$listingUrlRaw",
     "sameAs": [
       "$($store.yelpUrl)",
@@ -305,7 +306,7 @@ $indexBody = @"
     <button class="nav-panel__close" type="button" data-nav-close aria-label="Close menu">&times;</button>
     <nav>
       <ul class="nav-panel__list">
-        <li><a href="$menuUrl" target="_blank" rel="noopener">Menu</a></li>
+        <li><a href="menu/">Menu</a></li>
         <li><a href="#story" data-nav-link>Our Story</a></li>
         <li><a href="party-shoppe/">Party Shoppe</a></li>
         <li><a href="#visit" data-nav-link>Visit</a></li>
@@ -372,7 +373,7 @@ $tickerCopy
       <span class="eyebrow">Our Story</span>
       <h1 class="statement-title">$statementHeading</h1>
       <p class="statement__body">$statementBody</p>
-      <a class="btn btn--primary btn--lg" href="$menuUrl" target="_blank" rel="noopener">View Menu</a>
+      <a class="btn btn--primary btn--lg" href="menu/">View Menu</a>
     </div>
   </section>
 
@@ -492,10 +493,10 @@ $($hoursRows.ToString())
           </ul>
         </div>
         <div class="site-footer__col">
-          <h2><a href="$menuUrl" target="_blank" rel="noopener">Menu</a></h2>
+          <h2><a href="menu/">Menu</a></h2>
           <ul>
             <li><a href="$orderUrl" target="_blank" rel="noopener">Order Online</a></li>
-            <li><a href="$menuUrl" target="_blank" rel="noopener">See the full menu</a></li>
+            <li><a href="menu/">See the full menu</a></li>
             <li><a href="party-shoppe/">Party Shoppe</a></li>
           </ul>
         </div>
@@ -523,6 +524,11 @@ $sitemap = @"
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>$siteUrl/</loc>
+    <lastmod>$today</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>$siteUrl/menu/</loc>
     <lastmod>$today</lastmod>
     <changefreq>monthly</changefreq>
   </url>
