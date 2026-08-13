@@ -397,7 +397,7 @@ $tickerCopy
         <p class="faq__a">Yes. The Party Shoppe side of the store carries a full selection of liquor, beer, and wine, plus snacks and grocery essentials. One stop for game night.</p>
 
         <h3 class="faq__q">Do you cater parties and offices?</h3>
-        <p class="faq__a">We do. Torpedo trays, party pizzas, salads, and dessert trays for groups of any size. Call <a href="tel:$tel">$phone</a> to plan your order.</p>
+        <p class="faq__a">We do. Party pizza trays, salad trays, and Torpedo subs for groups of any size. Call <a href="tel:$tel">$phone</a> to plan your order.</p>
       </div>
     </div>
   </section>
