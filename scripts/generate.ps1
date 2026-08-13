@@ -315,7 +315,7 @@ $indexBody = @"
         <li><a href="#reviews" data-nav-link>Reviews</a></li>
         <li><a href="$orderUrl" target="_blank" rel="noopener">Order Online</a></li>
       </ul>
-      <p class="nav-panel__meta">$address &middot; $cityState &middot; $phone</p>
+      <p class="nav-panel__meta">$address &middot; $cityState &middot; <a href="tel:$tel">$phone</a></p>
     </nav>
   </div>
 

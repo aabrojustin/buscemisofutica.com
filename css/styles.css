@@ -257,6 +257,11 @@ p { margin: 0 0 1rem; }
 .site-header__burger {
   background: transparent;
   border: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
   padding: 0.35rem 0.5rem;
   font-size: 1.6rem;
   line-height: 1;
@@ -329,8 +334,8 @@ p { margin: 0 0 1rem; }
   z-index: 150;
   background: var(--brand-burgundy);
   color: var(--brand-white);
-  display: grid;
-  place-items: center;
+  display: flex;
+  overflow-y: auto;
   opacity: 0;
   visibility: hidden;
   transform: translateY(-8px);
@@ -343,6 +348,10 @@ p { margin: 0 0 1rem; }
   transform: translateY(0);
 }
 
+/* margin:auto centers when content fits and degrades to scrollable
+   top-alignment on short landscape phones (grid place-items clipped). */
+.nav-panel nav { margin: auto; padding-block: 4.5rem 2rem; }
+
 .nav-panel__close {
   position: absolute;
   top: 1.5rem;
@@ -353,6 +362,11 @@ p { margin: 0 0 1rem; }
   font-size: 2rem;
   line-height: 1;
   padding: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
 }
 
 .nav-panel__list {
@@ -498,6 +512,10 @@ p { margin: 0 0 1rem; }
 
 .actions--center { justify-content: center; }
 
+@media (max-width: 640px) {
+  .actions--center .btn--lg { flex: 1 1 100%; min-width: 0; padding-inline: 1.25rem; }
+}
+
 .faq--left { text-align: left; }
 
 /* Photo-beside-text row for the party-tray list: portrait food shot on the
@@ -576,7 +594,7 @@ p { margin: 0 0 1rem; }
   text-align: left;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
   .menu-items { grid-template-columns: 1fr; }
 }
 
@@ -602,6 +620,15 @@ p { margin: 0 0 1rem; }
   box-shadow: var(--shadow-card);
 }
 
+.menu-item h3 a {
+  display: inline-block;
+  padding-block: 0.55rem;
+  margin-block: -0.55rem;
+  text-decoration: underline;
+  text-decoration-color: var(--brand-gold);
+  text-underline-offset: 3px;
+}
+
 .menu-item h3 a:hover {
   color: var(--brand-red);
   text-decoration: underline;
@@ -619,6 +646,23 @@ p { margin: 0 0 1rem; }
 .menu-item__desc {
   margin-bottom: 0.35rem;
   color: var(--brand-black);
+  overflow-wrap: break-word;
+}
+
+/* Phones: the fixed 180px photo column starves the text, so each item
+   stacks - photo on top at full width, words below. */
+@media (max-width: 480px) {
+  .menu-item--thumb { grid-template-columns: 1fr; }
+  .menu-item--thumb h3,
+  .menu-item--thumb p { grid-column: 1; }
+  .menu-item__thumb {
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 560 / 380;
+    margin-bottom: 0.85rem;
+  }
 }
 
 .menu-item__sizes {
@@ -632,6 +676,13 @@ p { margin: 0 0 1rem; }
 
 .menu-page .section-title,
 .menu-page .rule { text-align: center; }
+
+.menu-page__note a {
+  color: var(--brand-red);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 
 .menu-page__note {
   text-align: center;
@@ -1196,12 +1247,22 @@ p { margin: 0 0 1rem; }
   .site-header__phone { font-size: 0.75rem; letter-spacing: 0.06em; margin-right: 0.25rem; padding-inline: 0.25rem; }
 }
 
-/* Narrowest phones: tighten the header row so all four items fit */
-@media (max-width: 400px) {
+/* Tight header rules must cover every phone: 401-430px viewports overflowed
+   when these stopped at 400px (iPhone XR/11 at 414px clipped the burger). */
+@media (max-width: 520px) {
   .site-header__inner { gap: 0.5rem; }
   .site-header__actions { gap: 0.375rem; }
   .site-header__actions .btn { padding-inline: 0.7rem; }
   .site-header__phone { margin-right: 0; padding-inline: 0.1rem; letter-spacing: 0.03em; }
+}
+
+/* The phone link is the widest header item; below 430px it yields so the
+   burger stays on screen. The number stays in the nav panel and footer. */
+@media (max-width: 430px) {
+  .site-header__phone { display: none; }
+}
+
+@media (max-width: 400px) {
   /* The mobile hero is its own art-directed crop, so plain centering is right */
   .hero__media img { object-position: center; }
   .hero__badges { gap: 0.5rem 1.5rem; }
