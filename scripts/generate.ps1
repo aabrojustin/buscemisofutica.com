@@ -290,14 +290,17 @@ $indexBody = @"
 
   <header class="site-header">
     <div class="container site-header__inner">
+      <div class="site-header__left">
       <a class="site-header__logo" href="#top" aria-label="The Original Buscemi's home">
         <img class="site-header__logo-full" src="assets/logo-lockup-red.png" alt="The Original Buscemi's Party Shoppe Pizza" width="847" height="328">
         <img class="site-header__logo-mini" src="assets/logo-shield.png" alt="The Original Buscemi's" width="208" height="322">
       </a>
+      <a class="site-header__phone" href="tel:$tel">$phone</a>
+      </div>
       <div class="site-header__actions">
-        <a class="site-header__phone" href="tel:$tel">$phone</a>
         <a class="btn btn--primary" href="menu/">Menu</a>
         <a class="btn btn--green" href="$orderUrl" target="_blank" rel="noopener">Order Online</a>
+        <a class="btn btn--outline site-header__careers" href="jobs/">Careers</a>
         <button class="site-header__burger" type="button" data-nav-toggle aria-expanded="false" aria-controls="nav-panel" aria-label="Open navigation">&#9776;</button>
       </div>
     </div>
@@ -310,6 +313,7 @@ $indexBody = @"
         <li><a href="menu/">Menu</a></li>
         <li><a href="#story" data-nav-link>Our Story</a></li>
         <li><a href="party-shoppe/">Party Shoppe</a></li>
+        <li><a href="jobs/">Careers</a></li>
         <li><a href="#visit" data-nav-link>Visit</a></li>
         <li><a href="#hours" data-nav-link>Hours</a></li>
         <li><a href="#reviews" data-nav-link>Reviews</a></li>
@@ -499,6 +503,7 @@ $($hoursRows.ToString())
             <li><a href="$orderUrl" target="_blank" rel="noopener">Order Online</a></li>
             <li><a href="menu/">See the full menu</a></li>
             <li><a href="party-shoppe/">Party Shoppe</a></li>
+            <li><a href="jobs/">We are hiring</a></li>
           </ul>
         </div>
 $followCol
@@ -530,6 +535,11 @@ $sitemap = @"
   </url>
   <url>
     <loc>$siteUrl/menu/</loc>
+    <lastmod>$today</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>$siteUrl/jobs/</loc>
     <lastmod>$today</lastmod>
     <changefreq>monthly</changefreq>
   </url>

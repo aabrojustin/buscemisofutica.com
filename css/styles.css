@@ -252,6 +252,21 @@ p { margin: 0 0 1rem; }
   min-height: 74px;
 }
 
+/* The phone number wears a quiet outlined box beside the logo. */
+.site-header__phone {
+  border: 2px solid var(--brand-red);
+  border-radius: var(--radius-sm);
+  padding: 0.55rem 0.9rem;
+}
+
+/* Logo and phone number ride together on the left. */
+.site-header__left {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.5rem, 2vw, 1.25rem);
+  min-width: 0;
+}
+
 /* Hamburger toggle for the nav overlay - the word "Menu" in the header now
    means the food menu page, so site navigation lives behind this icon. */
 .site-header__burger {
@@ -691,6 +706,98 @@ p { margin: 0 0 1rem; }
   color: var(--brand-charcoal);
 }
 
+/* Careers page: native application form styled to the site, posting into
+   the hiring backend invisibly. */
+.apply-form {
+  max-width: 640px;
+  margin: 1.5rem auto 0;
+  background: var(--brand-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  padding: 2rem clamp(1.25rem, 4vw, 2.5rem) 2.25rem;
+  text-align: left;
+}
+
+.apply-form__field { margin-bottom: 1.4rem; }
+
+.apply-form__field label {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brand-black);
+  margin-bottom: 0.45rem;
+}
+
+.apply-form__field label span { color: var(--brand-red); }
+
+.apply-form__optional {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  color: var(--brand-muted);
+  margin-left: 0.35rem;
+}
+
+.apply-form__field input,
+.apply-form__field textarea {
+  width: 100%;
+  font: inherit;
+  color: var(--brand-black);
+  border: 1px solid #D6D3CC;
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1rem;
+  transition: border-color var(--transition);
+}
+
+.apply-form__field textarea { resize: vertical; }
+
+.apply-form__field input:focus,
+.apply-form__field textarea:focus {
+  outline: none;
+  border-color: var(--brand-red);
+}
+
+.apply-form__submit { width: 100%; }
+
+.apply-form__thanks {
+  max-width: 640px;
+  margin: 1.5rem auto 0;
+  background: var(--brand-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  padding: 2.5rem 2rem;
+}
+
+.apply-form__thanks h3 {
+  color: var(--brand-green);
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.apply-form__thanks p { margin: 0; }
+
+/* Careers page: the application form embeds on the page (no bounce to an
+   external tab), framed like a card. */
+.apply-embed {
+  background: var(--brand-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  padding: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.apply-embed iframe {
+  width: 100%;
+  height: 1100px;
+  border: 0;
+  display: block;
+  border-radius: var(--radius-sm);
+}
+
 /* ==========================================================================
    Ticker - continuously scrolling band of short brand phrases.
    ========================================================================== */
@@ -835,6 +942,58 @@ p { margin: 0 0 1rem; }
 }
 
 .statement--compact .statement__body a { text-decoration: underline; text-underline-offset: 3px; }
+
+.statement--compact .visit__actions { margin-top: 1.4rem; }
+
+/* Careers page: the section label reads bigger than a standard eyebrow. */
+#apply .eyebrow { font-size: 1.05rem; }
+
+/* Shorter tail on the apply section, with the three perks as a compact row
+   under the form. */
+#apply { padding-bottom: clamp(2rem, 4vw, 3rem); }
+
+.apply-perks__label {
+  margin: 2.25rem 0 0.6rem;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  letter-spacing: -0.01em;
+  color: var(--brand-burgundy);
+}
+
+.apply-perks__rule { margin: 0 auto 1.4rem; }
+
+.apply-perks {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem 2.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.apply-perks li {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-weight: 700;
+  color: var(--brand-black);
+}
+
+.apply-perks li::before {
+  content: "";
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 50%;
+  background: var(--brand-gold);
+}
+
+/* The header Careers button yields on phones - the mobile audit showed the
+   row is already at capacity there. Careers stays in the overlay and footer. */
+@media (max-width: 640px) {
+  .site-header__careers { display: none; }
+}
 
 .statement__body {
   font-size: clamp(1rem, 1.6vw, 1.125rem);
@@ -1204,6 +1363,13 @@ p { margin: 0 0 1rem; }
   display: inline-block;
   padding-block: 0.55rem;
 }
+
+/* Careers page: a shorter footer - the page above it is a single task. */
+.site-footer--tight { padding-top: 1.75rem; }
+.site-footer--tight .site-footer__top { padding-bottom: 1rem; gap: 1.5rem 2.5rem; }
+.site-footer--tight .site-footer__brand img { width: 120px; }
+.site-footer--tight .site-footer__col h2 { font-size: 1.25rem; margin-bottom: 0.35rem; }
+.site-footer--tight .site-footer__col li a { padding-block: 0.4rem; }
 
 .site-footer__col a {
   /* Same face as the CONTACT / MENU headings above */
