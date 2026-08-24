@@ -517,6 +517,7 @@ $followCol
   </footer>
 
   <script src="js/main.js?v=$jsVer"></script>
+  <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3487a82a831f48ae997ac0cc13119242"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
 "@
