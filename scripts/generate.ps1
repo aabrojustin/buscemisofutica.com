@@ -392,7 +392,7 @@ $tickerCopy
 
       <div class="faq">
         <h3 class="faq__q">Do you deliver?</h3>
-        <p class="faq__a">We do not deliver ourselves, but you can get Buscemi's delivered through <a href="$doordashUrl" target="_blank" rel="noopener">DoorDash</a>. For pickup, order through our <a href="order/" target="_blank" rel="noopener">online ordering page</a> or call the store at <a href="tel:$tel">$phone</a>.</p>
+        <p class="faq__a">We do not deliver ourselves, but you can get Buscemi's delivered through <a href="delivery/" target="_blank" rel="noopener">DoorDash</a>. For pickup, order through our <a href="order/" target="_blank" rel="noopener">online ordering page</a> or call the store at <a href="tel:$tel">$phone</a>.</p>
 
         <h3 class="faq__q">What is a Torpedo&reg; sub?</h3>
         <p class="faq__a">The Torpedo is the Italian submarine sandwich Paul A. Buscemi introduced to Detroit in 1956. It stacks Italian cold cuts on a fresh baked roll with lettuce, tomato, onion, and oil &amp; vinegar. It comes as a Baby Sub, a full Torpedo, or a party tray.</p>
@@ -456,7 +456,7 @@ $($galleryHtml.ToString())
           </div>
           <p class="reviews__copy">Decades of regulars and counting. Loved your visit? Tell Google and help your neighbors find us.</p>
           <div class="reviews__actions">
-            <a class="btn btn--primary" href="$reviewUrl" target="_blank" rel="noopener">Leave a Google Review</a>
+            <a class="btn btn--primary" href="review/" target="_blank" rel="noopener">Leave a Google Review</a>
             <a class="btn btn--outline" href="$listingUrl" target="_blank" rel="noopener">Read Reviews</a>
           </div>
         </div>
