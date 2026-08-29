@@ -299,7 +299,7 @@ $indexBody = @"
       </div>
       <div class="site-header__actions">
         <a class="btn btn--primary" href="menu/">Menu</a>
-        <a class="btn btn--green" href="$orderUrl" target="_blank" rel="noopener">Order Online</a>
+        <a class="btn btn--green" href="order/" target="_blank" rel="noopener">Order Online</a>
         <a class="btn btn--outline site-header__careers" href="jobs/">Careers</a>
         <button class="site-header__burger" type="button" data-nav-toggle aria-expanded="false" aria-controls="nav-panel" aria-label="Open navigation">&#9776;</button>
       </div>
@@ -317,7 +317,7 @@ $indexBody = @"
         <li><a href="#visit" data-nav-link>Visit</a></li>
         <li><a href="#hours" data-nav-link>Hours</a></li>
         <li><a href="#reviews" data-nav-link>Reviews</a></li>
-        <li><a href="$orderUrl" target="_blank" rel="noopener">Order Online</a></li>
+        <li><a href="order/" target="_blank" rel="noopener">Order Online</a></li>
       </ul>
       <p class="nav-panel__meta">$address &middot; $cityState &middot; <a href="tel:$tel">$phone</a></p>
     </nav>
@@ -329,7 +329,7 @@ $indexBody = @"
     $heroMedia
     <div class="container hero__inner">
       <div class="hero__actions">
-        <a class="btn btn--green btn--lg" href="$orderUrl" target="_blank" rel="noopener">Order Online</a>
+        <a class="btn btn--green btn--lg" href="order/" target="_blank" rel="noopener">Order Online</a>
         <a class="btn btn--on-dark btn--lg" href="tel:$tel">Call $phone</a>
       </div>
     </div>
@@ -392,7 +392,7 @@ $tickerCopy
 
       <div class="faq">
         <h3 class="faq__q">Do you deliver?</h3>
-        <p class="faq__a">We do not deliver ourselves, but you can get Buscemi's delivered through <a href="$doordashUrl" target="_blank" rel="noopener">DoorDash</a>. For pickup, order through our <a href="$orderUrl" target="_blank" rel="noopener">online ordering page</a> or call the store at <a href="tel:$tel">$phone</a>.</p>
+        <p class="faq__a">We do not deliver ourselves, but you can get Buscemi's delivered through <a href="$doordashUrl" target="_blank" rel="noopener">DoorDash</a>. For pickup, order through our <a href="order/" target="_blank" rel="noopener">online ordering page</a> or call the store at <a href="tel:$tel">$phone</a>.</p>
 
         <h3 class="faq__q">What is a Torpedo&reg; sub?</h3>
         <p class="faq__a">The Torpedo is the Italian submarine sandwich Paul A. Buscemi introduced to Detroit in 1956. It stacks Italian cold cuts on a fresh baked roll with lettuce, tomato, onion, and oil &amp; vinegar. It comes as a Baby Sub, a full Torpedo, or a party tray.</p>
@@ -500,7 +500,7 @@ $($hoursRows.ToString())
         <div class="site-footer__col">
           <h2><a href="menu/">Menu</a></h2>
           <ul>
-            <li><a href="$orderUrl" target="_blank" rel="noopener">Order Online</a></li>
+            <li><a href="order/" target="_blank" rel="noopener">Order Online</a></li>
             <li><a href="menu/">See the full menu</a></li>
             <li><a href="party-shoppe/">Party Shoppe</a></li>
             <li><a href="jobs/">We are hiring</a></li>
