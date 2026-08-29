@@ -313,6 +313,7 @@ $indexBody = @"
         <li><a href="menu/">Menu</a></li>
         <li><a href="#story" data-nav-link>Our Story</a></li>
         <li><a href="party-shoppe/">Party Shoppe</a></li>
+        <li><a href="catering/">Catering</a></li>
         <li><a href="jobs/">Careers</a></li>
         <li><a href="#visit" data-nav-link>Visit</a></li>
         <li><a href="#hours" data-nav-link>Hours</a></li>
@@ -470,7 +471,7 @@ $($galleryHtml.ToString())
             title="Map of The Original Buscemi's $city, $nbhd"></iframe>
         </div>
         <div class="visit__hours" id="hours">
-          <span class="eyebrow">When we're open</span>
+          <span class="eyebrow">When we are open</span>
           <table class="hours__table hours__table--left">
             <tbody>
 $($hoursRows.ToString())
@@ -502,6 +503,7 @@ $($hoursRows.ToString())
           <ul>
             <li><a href="order/" target="_blank" rel="noopener">Order Online</a></li>
             <li><a href="menu/">See the full menu</a></li>
+            <li><a href="catering/">Catering</a></li>
             <li><a href="party-shoppe/">Party Shoppe</a></li>
             <li><a href="jobs/">We are hiring</a></li>
           </ul>
@@ -541,6 +543,11 @@ $sitemap = @"
   </url>
   <url>
     <loc>$siteUrl/jobs/</loc>
+    <lastmod>$today</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>$siteUrl/catering/</loc>
     <lastmod>$today</lastmod>
     <changefreq>monthly</changefreq>
   </url>
