@@ -311,7 +311,7 @@ $indexBody = @"
     <nav>
       <ul class="nav-panel__list">
         <li><a href="menu/">Menu</a></li>
-        <li><a href="#story" data-nav-link>Our Story</a></li>
+        <li><a href="story/">Our Story</a></li>
         <li><a href="party-shoppe/">Party Shoppe</a></li>
         <li><a href="catering/">Catering</a></li>
         <li><a href="jobs/">Careers</a></li>
@@ -503,6 +503,7 @@ $($hoursRows.ToString())
           <ul>
             <li><a href="order/" target="_blank" rel="noopener">Order Online</a></li>
             <li><a href="menu/">See the full menu</a></li>
+            <li><a href="story/">Our Story</a></li>
             <li><a href="catering/">Catering</a></li>
             <li><a href="party-shoppe/">Party Shoppe</a></li>
             <li><a href="jobs/">We are hiring</a></li>
@@ -544,6 +545,11 @@ $sitemap = @"
   <url>
     <loc>$siteUrl/jobs/</loc>
     <lastmod>$today</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>$siteUrl/story/</loc>
+    <lastmod>2026-08-31</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
