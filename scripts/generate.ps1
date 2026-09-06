@@ -8,6 +8,18 @@
 
 $ErrorActionPreference = "Stop"
 
+# ---------------------------------------------------------------------------
+# NOTE (September 2026): index.html is now HAND-AUTHORED. The site moved to the
+# "Night Oven" design and this script's page template is the OLD look. To keep
+# a PC-side run from silently reverting the homepage, index.html is no longer
+# written unless you deliberately set BUSCEMIS_REGEN_INDEX=1. sitemap.xml is
+# still regenerated as before.
+# ---------------------------------------------------------------------------
+$regenIndex = ($env:BUSCEMIS_REGEN_INDEX -eq "1")
+if (-not $regenIndex) {
+  Write-Host "index.html is hand-authored now; skipping its regeneration (set BUSCEMIS_REGEN_INDEX=1 to force). sitemap.xml will still be rewritten."
+}
+
 $root      = Split-Path -Parent $PSScriptRoot
 $dataPath  = Join-Path $root "data\store.json"
 $indexPath = Join-Path $root "index.html"
@@ -525,7 +537,7 @@ $followCol
 </html>
 "@
 
-WriteUtf8 $indexPath $indexBody
+if ($regenIndex) { WriteUtf8 $indexPath $indexBody }
 
 # ---- sitemap.xml (single-page site; lastmod = generation date) ----
 $today = Get-Date -Format "yyyy-MM-dd"
@@ -573,4 +585,8 @@ if ($galleryCount -eq 0) {
 if (-not $heroImg) {
   Write-Host "[note] No hero photo found - rendered the striped fallback. Add assets/hero.jpg."
 }
-Write-Host "[ok] Wrote index.html for $city -- $nbhd"
+if ($regenIndex) {
+  Write-Host "[ok] Wrote index.html for $city -- $nbhd"
+} else {
+  Write-Host "[ok] Wrote sitemap.xml. index.html was left untouched (hand-authored since September 2026)."
+}

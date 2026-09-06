@@ -1,0 +1,138 @@
+/* ==========================================================================
+   Catering - page rules only. Shared type, buttons, header, and footer come
+   from /css/styles.css. No photos on this page: type and spacing carry it.
+   ========================================================================== */
+
+/* ---------- Intro - quiet statement under the fixed header ---------- */
+.page-intro {
+  background: var(--ink-0);
+  padding-top: calc(var(--header-h) + clamp(4.5rem, 9vw, 7.5rem));
+  padding-bottom: var(--section-y);
+}
+
+/* The shield, small, as a quiet brand mark above the label. */
+.page-intro__mark {
+  width: auto;
+  height: 64px;
+  margin: 0 0 2.25rem;
+}
+
+.page-intro .statement__body { margin-bottom: 2.75rem; }
+
+.page-intro__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.5rem;
+}
+
+/* ---------- Occasions - six items in a hairline lattice ---------- */
+.occasions {
+  background: var(--ink-1);
+  padding-block: var(--section-y);
+}
+
+.occasions__head { margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+.occasions__head .rule { margin-bottom: 0; }
+
+/* The hairlines are the 1px gaps between cells; the cells paint the section
+   ground back over them. */
+.occasions__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+.occasions__item {
+  background: var(--ink-1);
+  padding: clamp(1.75rem, 3vw, 2.75rem) clamp(1.5rem, 2.6vw, 2.5rem);
+}
+
+.occasions__item h3 {
+  font-size: clamp(1.25rem, 1.6vw, 1.5rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  color: var(--paper);
+  margin: 0 0 0.85rem;
+}
+
+.occasions__item .menu-item__desc {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--paper-2);
+  max-width: 34ch;
+}
+
+/* ---------- Closing - one line, one number, centered ---------- */
+.closing {
+  background: var(--ink-0);
+  padding-block: var(--section-y);
+}
+
+.closing__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.closing__inner .section-title { max-width: 18ch; }
+
+.rule--center { margin-inline: auto; }
+
+.closing__copy {
+  font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+  line-height: 1.6;
+  color: var(--paper-2);
+  max-width: 52ch;
+  margin: 0 0 2.5rem;
+}
+
+.closing__copy a {
+  color: var(--paper);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--line-strong);
+  transition: text-decoration-color var(--t) var(--ease);
+}
+.closing__copy a:hover { text-decoration-color: var(--paper); }
+
+.closing__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem 1.5rem;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .occasions__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 640px) {
+  .page-intro { padding-top: calc(var(--header-h) + 3.5rem); }
+  .page-intro__mark { height: 56px; margin-bottom: 1.75rem; }
+  .page-intro__actions { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+  .page-intro__actions .btn--primary { align-self: stretch; }
+  .page-intro__actions .btn--outline { padding-inline: 0; }
+  .closing__actions .btn { width: 100%; }
+}
+
+@media (max-width: 560px) {
+  .occasions__grid { grid-template-columns: 1fr; }
+  .occasions__item .menu-item__desc { max-width: none; }
+}
+
+/* Narrow phones: let the long call button wrap instead of pushing past the edge. */
+@media (max-width: 400px) {
+  .page-intro__actions .btn,
+  .closing__actions .btn { white-space: normal; text-align: center; line-height: 1.3; }
+}

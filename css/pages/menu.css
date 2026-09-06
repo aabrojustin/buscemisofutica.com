@@ -1,0 +1,245 @@
+/* ==========================================================================
+   Menu page - "Night Oven"
+   Page-specific rules only. Tokens, type, header, nav panel, buttons, and the
+   footer all come from /css/styles.css and are not repeated here.
+   ========================================================================== */
+
+:root {
+  --menu-nav-h: 52px;                          /* the sticky category bar */
+  --menu-cat-gap: clamp(3.5rem, 7vw, 6rem);    /* air between categories */
+}
+
+/* Anchors land below the fixed header and the sticky category bar. */
+html { scroll-padding-top: calc(var(--header-h) + var(--menu-nav-h) + 1rem); }
+
+/* ==========================================================================
+   Intro - quiet: gold eyebrow, the page title, nothing else.
+   ========================================================================== */
+
+.menu-intro {
+  background: var(--ink-0);
+  padding-top: calc(var(--header-h) + clamp(3.5rem, 8vw, 6.5rem));
+  padding-bottom: clamp(2.75rem, 5vw, 4.5rem);
+}
+
+.menu-intro .statement-title {
+  max-width: 22ch;
+  margin-bottom: 0;
+}
+
+/* The second half of the title reads as the subtitle: same size, dimmer. */
+.menu-intro__sub { color: var(--muted); }
+
+/* ==========================================================================
+   Category bar - sticks under the header while the list scrolls past.
+   ========================================================================== */
+
+.menu-nav {
+  position: sticky;
+  top: calc(var(--header-h) + 1px);
+  z-index: 90;
+  background: var(--ink-0);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+/* The list is its own horizontal scroller on narrow screens, so the page
+   itself never grows sideways. Gutters live on the list so the clip edge is
+   the viewport, not the container. */
+.menu-nav__list {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  max-width: var(--container);
+  display: flex;
+  gap: clamp(1.25rem, 3vw, 2.75rem);
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.menu-nav__list::-webkit-scrollbar { display: none; }
+
+.menu-nav__list li { flex: none; }
+
+.menu-nav__list a {
+  display: inline-flex;
+  align-items: center;
+  min-height: calc(var(--menu-nav-h) - 2px);
+  padding-inline: 0.125rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-stretch: 90%;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--paper-2);
+  transition: color var(--t) var(--ease);
+}
+.menu-nav__list a:hover { color: var(--gold); }
+
+/* ==========================================================================
+   Categories - a title with the shield stripe, then a grid of dark cards.
+   ========================================================================== */
+
+.menu-cat { scroll-margin-top: 0; }
+
+.menu-cat__inner {
+  padding-top: 2.5rem;
+  padding-bottom: var(--menu-cat-gap);
+  border-top: 1px solid var(--line);
+}
+
+/* The first category follows the bar, which already draws the line. */
+.menu-cat--first .menu-cat__inner {
+  border-top: 0;
+  padding-top: clamp(2.75rem, 5vw, 4rem);
+}
+
+.menu-cat .section-title { margin-bottom: 1.25rem; }
+.menu-cat .rule { margin-bottom: clamp(2rem, 3.5vw, 2.75rem); }
+
+.menu-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(2rem, 3.5vw, 3rem) clamp(1.5rem, 3vw, 2.5rem);
+}
+
+/* No boxes. Each item is a photo that melts into the black at its edges,
+   then the words beneath it, then a hairline - the same voice as the
+   homepage, where nothing is framed. */
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1.6rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.menu-item__photo {
+  aspect-ratio: 4 / 3;
+  min-height: 0;
+  display: grid;
+  place-items: center;
+  padding: 6% 4%;
+  background: var(--ink-0);
+}
+
+/* The item itself, cut out of its studio background, floating on the black
+   like a menu board. Nothing is cropped; the whole pie or sub shows. */
+.menu-item__thumb {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: contain;
+  filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.55)) saturate(1.04);
+  transition: transform 500ms var(--ease);
+}
+.menu-item:hover .menu-item__thumb { transform: translateY(-4px) scale(1.02); }
+
+/* Small objects (a sauce cup) sit at a believable size inside the same frame. */
+.menu-item--small .menu-item__thumb { width: 56%; height: 56%; }
+
+.menu-item__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  padding: 1.1rem 0 0;
+}
+
+.menu-item h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  margin: 0 0 0.5rem;
+  text-wrap: pretty;
+}
+
+.menu-item h3 a {
+  color: var(--paper);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+  text-decoration-color: transparent;
+  transition: text-decoration-color var(--t) var(--ease);
+}
+.menu-item h3 a:hover { text-decoration-color: var(--line-strong); }
+
+.menu-item__desc {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--paper-2);
+}
+
+/* Sizes: the label voice in gold, pinned to the foot of the card so the
+   cards in a row end together. */
+.menu-item__sizes {
+  margin: auto 0 0;
+  padding-top: 0.6rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  font-stretch: 90%;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.6;
+  color: var(--gold);
+}
+.menu-item__desc + .menu-item__sizes { margin-top: 1.1rem; }
+.menu-item__body > .menu-item__desc:last-child { margin-bottom: 0; }
+
+/* ==========================================================================
+   Closing - order for pickup, or delivery, then the price note.
+   ========================================================================== */
+
+.menu-cta {
+  background: var(--ink-1);
+  border-top: 1px solid var(--line);
+  padding-block: clamp(4rem, 8vw, 6.5rem);
+  text-align: center;
+}
+
+.menu-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.menu-page__note {
+  margin: 0 auto;
+  max-width: 52ch;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.menu-page__note a {
+  color: var(--paper);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--line-strong);
+  transition: text-decoration-color var(--t) var(--ease);
+}
+.menu-page__note a:hover { text-decoration-color: var(--paper); }
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 1000px) {
+  .menu-items { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 640px) {
+  .menu-cta__actions .btn { flex: 1 1 100%; }
+}
+
+@media (max-width: 560px) {
+  .menu-items { grid-template-columns: 1fr; }
+}

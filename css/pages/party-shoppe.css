@@ -1,0 +1,188 @@
+/* ==========================================================================
+   Party Shoppe - page rules only.
+   Grounds, tokens, type, buttons, header, nav, and footer all come from
+   /css/styles.css. This file lays out the four blocks on this page.
+   ========================================================================== */
+
+/* ---------- Intro - opens under the fixed header on the page ground ---------- */
+.page-intro {
+  background: var(--ink-0);
+  padding-top: calc(var(--header-h) + clamp(4rem, 9vw, 7.5rem));
+  padding-bottom: var(--section-y);
+}
+
+/* ---------- On the Shelves - three plain rectangles, edge to edge ---------- */
+.shelves {
+  background: var(--ink-1);
+  padding-block: var(--section-y);
+}
+
+.shelves__head { margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+.shelves__head .rule { margin-bottom: 0; }
+
+.shoppe-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.shoppe-card { margin: 0; }
+
+.shoppe-card__media {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--ink-2);
+}
+
+.shoppe-card__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.shoppe-card__body { padding: 1.75rem clamp(1.25rem, 2.6vw, 3rem) 0; }
+
+.shoppe-card__body h3 {
+  font-size: 1.375rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  margin: 0 0 0.6rem;
+}
+
+.shoppe-card__body p {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--paper-2);
+  max-width: 34ch;
+}
+
+/* ---------- One Stop, One Trip - the square beside the copy ---------- */
+.tray {
+  background: var(--ink-0);
+  padding-block: var(--section-y);
+}
+
+.tray-media {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 6fr);
+  grid-template-rows: auto minmax(0, 1fr);
+  column-gap: clamp(2.5rem, 6vw, 6rem);
+}
+
+.tray-media__head {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.tray-media__head .square__copy { margin-bottom: 0; }
+
+.tray-media__photo {
+  max-width: 440px;
+  grid-column: 1;
+  grid-row: 1 / 3;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--ink-2);
+}
+
+.tray-media__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.tray-media__copy {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: end;
+  margin-top: 2.75rem;
+  padding-top: 2.25rem;
+  border-top: 1px solid var(--line);
+}
+
+.tray-media__copy h3 {
+  font-size: 1.375rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  margin: 0 0 0.75rem;
+}
+
+.tray-media__copy p {
+  font-size: 1.0625rem;
+  color: var(--paper-2);
+  max-width: 50ch;
+  margin: 0 0 1.75rem;
+}
+
+/* ---------- Find Us - label and title on the left, the details on the right ---------- */
+.find {
+  background: var(--ink-1);
+  padding-block: var(--section-y);
+}
+
+.find__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 2rem clamp(2.5rem, 6vw, 6rem);
+  align-items: start;
+}
+
+.find__head .rule { margin-bottom: 0; }
+
+/* Lines the copy up with the top of the title, below the eyebrow. */
+.find__body { padding-top: 2.75rem; }
+
+.find__copy {
+  font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+  line-height: 1.6;
+  color: var(--paper-2);
+  max-width: 44ch;
+  margin: 0 0 2rem;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  .tray-media__photo { margin-inline: auto; }
+  .tray-media {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+  }
+  .tray-media__head,
+  .tray-media__photo,
+  .tray-media__copy {
+    grid-column: 1;
+    grid-row: auto;
+  }
+  .tray-media__head { margin-bottom: 2.5rem; }
+  .tray-media__photo { aspect-ratio: 4 / 3; }
+  .tray-media__copy {
+    align-self: start;
+    margin-top: 2.25rem;
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  .find__inner { grid-template-columns: 1fr; }
+  .find__body { padding-top: 0; }
+}
+
+@media (max-width: 760px) {
+  /* Phones: the strip stacks, each photo runs edge to edge. */
+  .shoppe-grid {
+    grid-template-columns: 1fr;
+    row-gap: clamp(2.5rem, 8vw, 3.5rem);
+  }
+  .shoppe-card__media { aspect-ratio: 4 / 3; }
+  .shoppe-card__body { padding: 1.5rem var(--gutter) 0; }
+  .shoppe-card__body p { max-width: 40ch; }
+}

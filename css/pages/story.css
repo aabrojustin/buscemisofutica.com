@@ -1,0 +1,172 @@
+/* ==========================================================================
+   Our Story - page rules only.
+   Grounds, type, buttons, header, and footer all come from /css/styles.css.
+   This file only places the story's blocks: the intro clear of the fixed
+   header, the six-moment timeline on a hairline grid, the storefront photo
+   beside its copy, the two-column questions, and the closing call.
+   ========================================================================== */
+
+/* ---------- Intro: the statement, clear of the fixed header ---------- */
+.story-intro {
+  background: var(--ink-0);
+  padding-top: calc(var(--header-h) + var(--section-y));
+  padding-bottom: clamp(3.5rem, 7vw, 6rem);
+}
+
+.story-intro .statement__body { margin-bottom: 0; }
+
+/* ---------- Timeline: six moments on a three-column hairline grid ---------- */
+.story-timeline {
+  background: var(--ink-0);
+  padding-bottom: var(--section-y);
+}
+
+.story-timeline__head {
+  padding-top: clamp(3.5rem, 7vw, 6rem);
+  border-top: 1px solid var(--line);
+}
+
+/* Shared hairline list: each cell opens with a hairline, the list closes with
+   one. Rows stay level because grid rows share a height. */
+.story-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  row-gap: 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.story-list--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: clamp(2rem, 4vw, 3.5rem);
+}
+
+.story-list--2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(2.5rem, 6vw, 6rem);
+}
+
+.story-list__item {
+  border-top: 1px solid var(--line);
+  padding: 1.75rem 0 2.5rem;
+}
+
+.story-list__title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  color: var(--paper);
+  margin: 0 0 0.75rem;
+}
+
+/* The small gold point that marks each moment on the timeline. */
+.story-list__title--dot::before {
+  content: "";
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+.story-list__text {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--paper-2);
+  max-width: 36ch;
+}
+
+.story-list__text--muted { color: var(--muted); max-width: 44ch; }
+
+/* ---------- One roof: the storefront in a plain rectangle, copy beside it ---------- */
+.story-roof {
+  background: var(--ink-1);
+  padding-block: var(--section-y);
+}
+
+.story-roof__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(2.5rem, 6vw, 6rem);
+  align-items: center;
+}
+
+.story-roof__photo {
+  max-width: 400px;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--ink-2);
+}
+
+/* The archival print is small; toned like the homepage's heritage row. */
+.story-roof__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.02);
+  opacity: 0.92;
+}
+
+.story-roof__sub {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  margin: 0 0 0.75rem;
+}
+
+.story-roof__copy {
+  font-size: 1.0625rem;
+  color: var(--paper-2);
+  max-width: 52ch;
+  margin: 0 0 2rem;
+}
+
+/* ---------- Questions: two columns, hairline divided ---------- */
+.story-qa {
+  background: var(--ink-0);
+  padding-block: var(--section-y);
+}
+
+/* ---------- Closing call ---------- */
+.story-close {
+  background: var(--ink-1);
+  padding-block: var(--section-y);
+}
+
+.story-close__copy {
+  font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+  line-height: 1.6;
+  color: var(--paper-2);
+  max-width: 48ch;
+  margin: 0 0 2.5rem;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  .story-roof__photo { margin-inline: auto; }
+  .story-list--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .story-roof__grid {
+    grid-template-columns: 1fr;
+    gap: clamp(2rem, 6vw, 3rem);
+    align-items: start;
+  }
+}
+
+@media (max-width: 640px) {
+  .story-list--3,
+  .story-list--2 { grid-template-columns: 1fr; }
+
+  .story-list__item { padding: 1.5rem 0 1.75rem; }
+  .story-list__text,
+  .story-list__text--muted { max-width: none; }
+}
