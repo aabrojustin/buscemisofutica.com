@@ -513,6 +513,28 @@ h1, h2, h3 {
   margin: 0 0 2.5rem;
 }
 
+/* One quiet line of press under the story, before the menu button. */
+.statement__press {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--muted);
+  max-width: 56ch;
+  margin: -1.25rem 0 2.5rem;
+}
+
+.statement__press a,
+.story-list__link {
+  color: var(--paper);
+  text-decoration: underline;
+  text-decoration-color: var(--gold);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  transition: color 200ms var(--ease);
+}
+
+.statement__press a:hover,
+.story-list__link:hover { color: var(--gold); }
+
 .statement__prints {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
