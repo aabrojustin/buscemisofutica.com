@@ -25,6 +25,49 @@
   <script>
     setTimeout(function () { location.replace(document.getElementById('go').href); }, 400);
   </script>
-  <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3487a82a831f48ae997ac0cc13119242"}'></script><!-- End Cloudflare Web Analytics -->
+  <!-- Cloudflare Web Analytics, loaded only for real visitors on the live site.
+       Skipped for automated browsers, known crawlers, local previews, and any device
+       that has opened the site once with ?nocount=1 (undo with ?nocount=0). -->
+  <script>
+  (function () {
+    function shouldCount(ua, webdriver, host, flag) {
+      if (webdriver) return false;
+      ua = String(ua || '').replace(/cubot/ig, '');
+      if (/bot|crawl|spider|slurp|headless|phantom|selenium|puppeteer|playwright|lighthouse|pagespeed|python|curl|wget|scrapy|gptbot|claudebot|claude\/|perplexity|bytespider|ccbot|applebot|facebookexternalhit/i.test(ua)) return false;
+      if (host !== 'buscemisofutica.com' && host !== 'www.buscemisofutica.com') return false;
+      if (flag === '1') return false;
+      return true;
+    }
+    window.buscemisShouldCount = shouldCount;
+    var flag = null, consumed = false, params = null;
+    try {
+      params = new URLSearchParams(location.search);
+      var q = params.get('nocount');
+      var ownLink = !document.referrer || /^https?:\/\/(www\.)?buscemisofutica\.com(\/|$)/.test(document.referrer);
+      if (q !== null && ownLink) {
+        if (q === '1') localStorage.setItem('buscemis-nocount', '1');
+        if (q === '0') localStorage.removeItem('buscemis-nocount');
+        consumed = true;
+      }
+    } catch (e) {}
+    try { flag = localStorage.getItem('buscemis-nocount'); } catch (e) {}
+    try {
+      if (consumed) {
+        params.delete('nocount');
+        var rest = params.toString();
+        history.replaceState(null, '', location.pathname + (rest ? '?' + rest : '') + location.hash);
+      }
+    } catch (e) {}
+    try {
+      if (!shouldCount(navigator.userAgent, !!navigator.webdriver, location.hostname, flag)) return;
+      var s = document.createElement('script');
+      s.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+      s.defer = true;
+      s.setAttribute('data-cf-beacon', '{"token": "3487a82a831f48ae997ac0cc13119242"}');
+      document.body.appendChild(s);
+    } catch (e) {}
+  })();
+  </script>
+  <!-- End Cloudflare Web Analytics -->
 </body>
 </html>
