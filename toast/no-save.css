@@ -1,0 +1,11 @@
+/* Buscemi's photo save deterrent, loaded by Toast as an external stylesheet.
+   pointer-events makes right clicks pass through images so the browser never
+   offers "Save image as"; the rest blocks drag, select, and the iPhone long
+   press sheet. Deterrent only: screenshots are always possible. */
+img {
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+}
